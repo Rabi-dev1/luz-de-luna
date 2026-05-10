@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, Calendar, Users, Clock } from 'lucide-react'
 
-export default function ReservationSection() {
+export default function ReservationSection({ hideHeader = false }: { hideHeader?: boolean }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', persons: '2', date: '', time: '19:00', notes: '' })
   const [submitted, setSubmitted] = useState(false)
 
@@ -25,15 +25,25 @@ export default function ReservationSection() {
   return (
     <section id="reservation" className="py-24 bg-[#0d0d1a]">
       <div className="max-w-2xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase mb-3">Online Buchung</p>
-          <h2 className="font-playfair text-5xl font-black text-[#f5f0e8] mb-4">Tisch reservieren</h2>
-          <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto mb-4" />
-          <p className="text-[#f5f0e8]/50 font-inter text-sm">
-            Wir freuen uns auf Sie! Reservierungen auch telefonisch:{' '}
-            <a href="tel:+4951112345" className="text-[#c9a84c]">+49 511 12345</a>
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-12">
+            <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase mb-3">Online Buchung</p>
+            <h2 className="font-playfair text-5xl font-black text-[#f5f0e8] mb-4">Tisch reservieren</h2>
+            <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto mb-4" />
+            <p className="text-[#f5f0e8]/50 font-inter text-sm">
+              Wir freuen uns auf Sie! Reservierungen auch telefonisch:{' '}
+              <a href="tel:+4951112345" className="text-[#c9a84c]">+49 511 12345</a>
+            </p>
+          </div>
+        )}
+        {hideHeader && (
+          <div className="text-center mb-12">
+            <p className="text-[#f5f0e8]/50 font-inter text-sm">
+              Wir freuen uns auf Sie! Reservierungen auch telefonisch:{' '}
+              <a href="tel:+4951112345" className="text-[#c9a84c]">+49 511 12345</a>
+            </p>
+          </div>
+        )}
 
         {submitted ? (
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}

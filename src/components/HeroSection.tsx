@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { ChevronDown, MapPin } from 'lucide-react'
+import Link from 'next/link'
 
 export default function HeroSection() {
   return (
@@ -59,14 +60,14 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <a href="#reservation"
+          <Link href="/reservierung"
             className="bg-[#c9a84c] text-[#1a1a2e] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#b8860b] transition-all duration-200 hover:scale-105 active:scale-95">
             Tisch reservieren
-          </a>
-          <a href="#menu"
+          </Link>
+          <Link href="/speisekarte"
             className="border-2 border-[#c9a84c] text-[#c9a84c] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#c9a84c]/10 transition-all duration-200">
             Speisekarte ansehen
-          </a>
+          </Link>
         </motion.div>
       </div>
 

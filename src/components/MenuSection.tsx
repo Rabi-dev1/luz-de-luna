@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { menuData } from '@/lib/menuData'
 
-export default function MenuSection() {
+export default function MenuSection({ hideHeader = false }: { hideHeader?: boolean }) {
   const [activeTab, setActiveTab] = useState('breakfast')
   const activeCategory = menuData.find(c => c.id === activeTab)!
 
@@ -11,11 +11,13 @@ export default function MenuSection() {
     <section id="menu" className="py-24 bg-[#f5f0e8]">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase mb-3">Unsere Karte</p>
-          <h2 className="font-playfair text-5xl md:text-6xl font-black text-[#1a1a2e] mb-4">Speisekarte</h2>
-          <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto" />
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-16">
+            <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase mb-3">Unsere Karte</p>
+            <h2 className="font-playfair text-5xl md:text-6xl font-black text-[#1a1a2e] mb-4">Speisekarte</h2>
+            <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto" />
+          </div>
+        )}
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">

@@ -11,18 +11,20 @@ const galleryItems = [
   { gradient: 'from-[#1a2d28] to-[#2d5048]', label: 'Unsere Küche', span: 'col-span-2' },
 ]
 
-export default function GallerySection() {
+export default function GallerySection({ hideHeader = false }: { hideHeader?: boolean }) {
   return (
     <section id="gallery" className="py-24 bg-[#f5f0e8]">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <Camera size={20} className="text-[#c9a84c]" />
-            <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase">Galerie</p>
+        {!hideHeader && (
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <Camera size={20} className="text-[#c9a84c]" />
+              <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase">Galerie</p>
+            </div>
+            <h2 className="font-playfair text-5xl font-black text-[#1a1a2e] mb-4">Eindrücke</h2>
+            <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto" />
           </div>
-          <h2 className="font-playfair text-5xl font-black text-[#1a1a2e] mb-4">Eindrücke</h2>
-          <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto" />
-        </div>
+        )}
 
         <div className="grid grid-cols-3 grid-rows-3 gap-3 h-[600px]">
           {galleryItems.map((item, i) => (

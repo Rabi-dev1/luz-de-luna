@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Share2, Globe } from 'lucide-react'
 
 export default function Footer() {
@@ -7,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="font-playfair text-2xl font-black text-[#c9a84c] mb-3">Luz de Luna</h3>
+            <Link href="/" className="font-playfair text-2xl font-black text-[#c9a84c] mb-3 inline-block">Luz de Luna</Link>
             <p className="text-[#f5f0e8]/50 font-inter text-sm leading-relaxed">Restaurant & Café in Hannover. Regionale Küche, warme Atmosphäre, unvergessliche Momente.</p>
           </div>
           {/* Address */}
@@ -31,11 +32,22 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-[#f5f0e8]/30 font-inter text-xs">© 2024 Luz de Luna. Alle Rechte vorbehalten.</p>
-          <div className="flex gap-4">
-            <a href="#" className="text-[#f5f0e8]/30 hover:text-[#c9a84c] font-inter text-xs transition-colors">Impressum</a>
-            <a href="#" className="text-[#f5f0e8]/30 hover:text-[#c9a84c] font-inter text-xs transition-colors">Datenschutz</a>
+
+        {/* Page nav */}
+        <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <nav className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-2">
+            <Link href="/speisekarte" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Speisekarte</Link>
+            <Link href="/reservierung" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Reservierung</Link>
+            <Link href="/galerie" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Galerie</Link>
+            <Link href="/ueber-uns" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Über uns</Link>
+            <Link href="/kontakt" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Kontakt</Link>
+          </nav>
+          <div className="flex items-center gap-4">
+            <p className="text-[#f5f0e8]/30 font-inter text-xs">© 2024 Luz de Luna. Alle Rechte vorbehalten.</p>
+            <div className="flex gap-4">
+              <a href="#" className="text-[#f5f0e8]/30 hover:text-[#c9a84c] font-inter text-xs transition-colors">Impressum</a>
+              <a href="#" className="text-[#f5f0e8]/30 hover:text-[#c9a84c] font-inter text-xs transition-colors">Datenschutz</a>
+            </div>
           </div>
         </div>
       </div>

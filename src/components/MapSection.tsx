@@ -9,15 +9,17 @@ const hours = [
   { days: 'Feiertage', time: '10:00 – 21:00' },
 ]
 
-export default function MapSection() {
+export default function MapSection({ hideHeader = false }: { hideHeader?: boolean }) {
   return (
     <section id="contact" className="py-24 bg-[#f5f0e8]">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase mb-3">Besuchen Sie uns</p>
-          <h2 className="font-playfair text-5xl font-black text-[#1a1a2e] mb-4">Anfahrt & Kontakt</h2>
-          <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto" />
-        </div>
+        {!hideHeader && (
+          <div className="text-center mb-16">
+            <p className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase mb-3">Besuchen Sie uns</p>
+            <h2 className="font-playfair text-5xl font-black text-[#1a1a2e] mb-4">Anfahrt & Kontakt</h2>
+            <div className="w-16 h-0.5 bg-[#c9a84c] mx-auto" />
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Map Placeholder */}

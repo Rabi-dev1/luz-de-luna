@@ -10,7 +10,7 @@ const features = [
   { icon: Star, label: 'Top bewertet', desc: '4.8 ⭐ auf Google' },
 ]
 
-export default function AboutSection() {
+export default function AboutSection({ hideHeader = false }: { hideHeader?: boolean }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
