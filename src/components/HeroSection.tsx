@@ -15,13 +15,16 @@ export default function HeroSection() {
   return (
     <section ref={ref} className="relative h-screen min-h-[600px] overflow-hidden flex items-center">
       {/* Parallax background */}
-      <motion.div className="absolute inset-0 scale-110" style={{ y: bgY }}>
+      <motion.div className="absolute inset-0 scale-110 vignette" style={{ y: bgY }}>
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center food-img"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1920&q=85')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1815]/70 via-[#1A1815]/40 to-[#1A1815]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1815]/50 via-transparent to-transparent" />
+        {/* Directional gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#14120E]/75 via-[#14120E]/30 to-[#14120E]/85" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#14120E]/60 via-transparent to-transparent" />
+        {/* Radial vignette for focus center */}
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 25%, rgba(20,18,14,0.7) 100%)' }} />
       </motion.div>
 
       {/* Decorative top line */}
@@ -44,22 +47,22 @@ export default function HeroSection() {
             <div className="w-8 h-px bg-[#C9A96E]" />
           </div>
 
-          <h1 className="font-cormorant font-semibold text-[#FDFCFA] leading-[0.9] mb-8">
-            <span className="block text-7xl sm:text-8xl md:text-[10rem] lg:text-[12rem] tracking-tight">Luz</span>
-            <span className="block text-7xl sm:text-8xl md:text-[10rem] lg:text-[12rem] tracking-tight text-[#C9A96E] italic">de Luna</span>
+          <h1 className="font-cormorant font-semibold text-[#FDFCFA] leading-[0.9] mb-8 tracking-[0.03em]">
+            <span className="block text-7xl sm:text-8xl md:text-[10rem] lg:text-[12rem]">Luz</span>
+            <span className="block text-7xl sm:text-8xl md:text-[10rem] lg:text-[12rem] text-[#C5A059] italic">de Luna</span>
           </h1>
 
-          <p className="text-[#FDFCFA]/55 font-inter font-light text-base md:text-lg tracking-[0.1em] uppercase mb-12 max-w-xs">
+          <p className="text-[#FDFCFA]/50 font-inter font-extralight text-xs md:text-sm tracking-[0.35em] uppercase mb-14 max-w-xs">
             Wo jeder Moment zum Genuss wird
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/#menu"
-              className="inline-flex items-center justify-center bg-[#C9A96E] text-[#1A1815] px-8 py-4 font-inter font-semibold text-xs tracking-[0.2em] uppercase hover:bg-[#E0C48A] transition-colors duration-200">
+              className="inline-flex items-center justify-center bg-[#C5A059] text-[#1A1815] px-8 py-4 font-inter font-semibold text-xs tracking-[0.25em] uppercase hover:bg-[#D4AF6A] transition-colors duration-200">
               Speisekarte
             </Link>
             <Link href="/#reservation"
-              className="inline-flex items-center justify-center border border-[#FDFCFA]/30 text-[#FDFCFA]/80 px-8 py-4 font-inter font-medium text-xs tracking-[0.2em] uppercase hover:border-[#C9A96E] hover:text-[#C9A96E] transition-all duration-200">
+              className="inline-flex items-center justify-center border border-[#FDFCFA]/25 text-[#FDFCFA]/75 px-8 py-4 font-inter font-light text-xs tracking-[0.25em] uppercase hover:border-[#C5A059] hover:text-[#C5A059] transition-all duration-200">
               Tisch reservieren
             </Link>
           </div>

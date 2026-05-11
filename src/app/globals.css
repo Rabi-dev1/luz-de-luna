@@ -30,7 +30,29 @@ body {
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #FAF8F4; }
-::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 2px; }
 
 .font-cormorant { font-family: var(--font-cormorant); }
 .font-inter { font-family: var(--font-inter); }
+
+/* Global food image treatment — dramatic & editorial */
+.food-img {
+  filter: brightness(0.82) contrast(1.06) saturate(0.95);
+}
+
+/* Radial vignette overlay for hero images */
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(20,18,14,0.65) 100%);
+  pointer-events: none;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(20, 18, 14, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
