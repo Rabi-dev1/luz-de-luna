@@ -1,53 +1,83 @@
 import Link from 'next/link'
-import { Share2, Globe } from 'lucide-react'
+import { Phone, Mail, MapPin, Camera, Globe } from 'lucide-react'
+
+const footerNav = [
+  { label: 'Frühstück & Brunch', href: '/fruehstueck' },
+  { label: 'Kaffee & Kuchen', href: '/kaffee-kuchen' },
+  { label: 'Abendkarte', href: '/abendkarte' },
+  { label: 'Events', href: '/events' },
+  { label: 'Galerie', href: '/galerie' },
+  { label: 'Reservierung', href: '/reservierung' },
+  { label: 'Kontakt', href: '/kontakt' },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d0d1a] border-t border-[#c9a84c]/10">
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <footer className="bg-[#1C160D] text-[#FAF7F2]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <Link href="/" className="font-playfair text-2xl font-black text-[#c9a84c] mb-3 inline-block">Luz de Luna</Link>
-            <p className="text-[#f5f0e8]/50 font-inter text-sm leading-relaxed">Restaurant & Café in Hannover. Regionale Küche, warme Atmosphäre, unvergessliche Momente.</p>
-          </div>
-          {/* Address */}
-          <div>
-            <h4 className="font-playfair font-bold text-[#f5f0e8] mb-3">Adresse</h4>
-            <p className="text-[#f5f0e8]/50 font-inter text-sm">Georgstraße 10<br />30159 Hannover<br />Deutschland</p>
-            <a href="tel:+4951112345" className="text-[#c9a84c] font-inter text-sm mt-2 block hover:underline">+49 511 12345</a>
-          </div>
-          {/* Links */}
-          <div>
-            <h4 className="font-playfair font-bold text-[#f5f0e8] mb-3">Folgt uns</h4>
+            <Link href="/" className="font-playfair text-2xl font-bold text-[#D4AF5A] block mb-4">
+              Luz de Luna
+            </Link>
+            <p className="text-[#FAF7F2]/40 font-inter text-sm leading-relaxed mb-5">
+              Restaurant & Café in Hannover. Regionale Küche, warme Atmosphäre, unvergessliche Momente.
+            </p>
             <div className="flex gap-3">
               <a href="https://www.instagram.com/luzdluna_hannover" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 border border-[#c9a84c]/30 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-colors">
-                <Share2 size={18} />
+                className="w-9 h-9 border border-[#B8962E]/30 rounded-full flex items-center justify-center text-[#B8962E] hover:bg-[#B8962E]/10 transition-colors" aria-label="Instagram">
+                <Camera size={15} />
               </a>
               <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 border border-[#c9a84c]/30 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/10 transition-colors">
-                <Globe size={18} />
+                className="w-9 h-9 border border-[#B8962E]/30 rounded-full flex items-center justify-center text-[#B8962E] hover:bg-[#B8962E]/10 transition-colors" aria-label="Facebook">
+                <Globe size={15} />
               </a>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h3 className="font-playfair font-bold text-[#FAF7F2] mb-4 text-sm tracking-wide">Navigation</h3>
+            <ul className="space-y-2">
+              {footerNav.map(item => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-[#FAF7F2]/45 hover:text-[#D4AF5A] font-inter text-sm transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="font-playfair font-bold text-[#FAF7F2] mb-4 text-sm tracking-wide">Kontakt</h3>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <MapPin size={14} className="text-[#B8962E] mt-0.5 shrink-0" />
+                <p className="text-[#FAF7F2]/45 font-inter text-sm">Georgstraße 10<br />30159 Hannover</p>
+              </div>
+              <a href="tel:+4951112345" className="flex items-center gap-3 group">
+                <Phone size={14} className="text-[#B8962E] shrink-0" />
+                <span className="text-[#FAF7F2]/45 font-inter text-sm group-hover:text-[#D4AF5A] transition-colors">+49 511 12345</span>
+              </a>
+              <a href="mailto:info@luz-de-luna.de" className="flex items-center gap-3 group">
+                <Mail size={14} className="text-[#B8962E] shrink-0" />
+                <span className="text-[#FAF7F2]/45 font-inter text-sm group-hover:text-[#D4AF5A] transition-colors">info@luz-de-luna.de</span>
+              </a>
+            </div>
+            <div className="mt-6 pt-5 border-t border-[#B8962E]/10">
+              <p className="text-[#FAF7F2]/25 text-xs font-inter">Mo–Fr 08–22 Uhr · Sa–So 09–23 Uhr</p>
             </div>
           </div>
         </div>
 
-        {/* Page nav */}
-        <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <nav className="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-2">
-            <Link href="/speisekarte" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Speisekarte</Link>
-            <Link href="/reservierung" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Reservierung</Link>
-            <Link href="/galerie" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Galerie</Link>
-            <Link href="/ueber-uns" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Über uns</Link>
-            <Link href="/kontakt" className="text-[#f5f0e8]/40 hover:text-[#c9a84c] font-inter text-xs transition-colors">Kontakt</Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <p className="text-[#f5f0e8]/30 font-inter text-xs">© 2024 Luz de Luna. Alle Rechte vorbehalten.</p>
-            <div className="flex gap-4">
-              <a href="#" className="text-[#f5f0e8]/30 hover:text-[#c9a84c] font-inter text-xs transition-colors">Impressum</a>
-              <a href="#" className="text-[#f5f0e8]/30 hover:text-[#c9a84c] font-inter text-xs transition-colors">Datenschutz</a>
-            </div>
+        <div className="border-t border-[#B8962E]/10 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-[#FAF7F2]/25 font-inter text-xs">© 2025 Luz de Luna. Alle Rechte vorbehalten.</p>
+          <div className="flex gap-5">
+            <a href="#" className="text-[#FAF7F2]/25 hover:text-[#D4AF5A] font-inter text-xs transition-colors">Impressum</a>
+            <a href="#" className="text-[#FAF7F2]/25 hover:text-[#D4AF5A] font-inter text-xs transition-colors">Datenschutz</a>
           </div>
         </div>
       </div>

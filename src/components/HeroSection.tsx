@@ -1,90 +1,83 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ChevronDown, MapPin } from 'lucide-react'
 import Link from 'next/link'
+import { MapPin, ChevronDown } from 'lucide-react'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0d0d1a] via-[#1a1a2e] to-[#2d1810]" />
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-30"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80')" }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-transparent to-[#1a1a2e]/60" />
+    <section id="hero" className="relative min-h-screen flex items-end pb-24 overflow-hidden">
+      {/* IMAGE PLACEHOLDER — replace src with real photo */}
+      <div className="absolute inset-0">
+        <div className="w-full h-full bg-[#2E2010] relative overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-50"
+            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1920&q=85')" }}
+            aria-hidden="true"
+          />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C160D] via-[#1C160D]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1C160D]/60 via-transparent to-transparent" />
+        </div>
+      </div>
 
-      {/* Decorative gold circles */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-[#c9a84c]/5 blur-3xl" />
-      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-[#c17a5a]/5 blur-3xl" />
+      {/* Decorative gold line */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#B8962E]/60 to-transparent" />
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex items-center justify-center gap-2 mb-6"
+          transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
+          className="max-w-2xl"
         >
-          <MapPin size={16} className="text-[#c9a84c]" />
-          <span className="text-[#c9a84c] text-sm font-medium tracking-widest uppercase">Hannover Mitte</span>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="flex items-center gap-2 mb-5"
+          >
+            <MapPin size={13} className="text-[#B8962E]" />
+            <span className="text-[#B8962E] text-xs font-medium tracking-[0.2em] uppercase">Hannover Mitte</span>
+          </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-playfair text-7xl md:text-9xl font-black text-[#f5f0e8] leading-none mb-4"
-        >
-          Luz de Luna
-        </motion.h1>
+          <h1 className="font-playfair text-6xl sm:text-7xl md:text-8xl font-black text-[#FDFAF6] leading-[0.95] mb-5">
+            Luz<br />de Luna
+          </h1>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="w-24 h-0.5 bg-[#c9a84c] mx-auto mb-6"
-        />
+          <div className="w-12 h-px bg-[#B8962E] mb-6" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-xl md:text-2xl text-[#f5f0e8]/70 font-inter mb-10 leading-relaxed"
-        >
-          Dein Genussmoment in Hannover
-        </motion.p>
+          <p className="text-[#FAF7F2]/70 font-inter text-lg md:text-xl leading-relaxed mb-10 max-w-md">
+            Wo jeder Moment zum Genuss wird —<br />
+            <span className="text-[#D4AF5A] font-medium">mitten in Hannover.</span>
+          </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Link href="/reservierung"
-            className="bg-[#c9a84c] text-[#1a1a2e] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#b8860b] transition-all duration-200 hover:scale-105 active:scale-95">
-            Tisch reservieren
-          </Link>
-          <Link href="/speisekarte"
-            className="border-2 border-[#c9a84c] text-[#c9a84c] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#c9a84c]/10 transition-all duration-200">
-            Speisekarte ansehen
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/#reservierung"
+              className="inline-flex items-center justify-center bg-[#B8962E] text-[#FDFAF6] px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hover:bg-[#D4AF5A] transition-all duration-200 hover:scale-105 active:scale-95">
+              Tisch reservieren
+            </Link>
+            <Link href="/#karte"
+              className="inline-flex items-center justify-center border border-[#FAF7F2]/30 text-[#FAF7F2] px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hover:border-[#D4AF5A] hover:text-[#D4AF5A] transition-all duration-200">
+              Speisekarte ansehen
+            </Link>
+          </div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <motion.a
+        href="/#ueber-uns"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-8 right-8 md:right-12 flex flex-col items-center gap-2 text-[#FAF7F2]/40 hover:text-[#D4AF5A] transition-colors"
+        aria-label="Nach unten scrollen"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
-          <ChevronDown size={32} className="text-[#c9a84c]/60" />
+        <span className="text-[10px] tracking-[0.2em] uppercase rotate-90 origin-center mb-4">Scroll</span>
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>
+          <ChevronDown size={18} />
         </motion.div>
-      </motion.div>
+      </motion.a>
     </section>
   )
 }
