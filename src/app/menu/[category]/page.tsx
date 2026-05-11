@@ -17,9 +17,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { category } = await params
   const cat = menuCategories.find(c => c.slug === category)
   if (!cat) return {}
+
+  const title = `${cat.label} – Luz de Luna Hannover`
+  const description = `${cat.label} bei Luz de Luna in Hannover-Linden. ${cat.description} Frisch zubereitet · Falkenstraße 22A, 30449 Hannover. Jetzt reservieren!`
+
   return {
-    title: `${cat.label} – Luz de Luna Hannover`,
-    description: `${cat.label} bei Luz de Luna in Hannover. ${cat.description} Falkenstraße 22A, 30449 Hannover.`,
+    title,
+    description,
+    alternates: {
+      canonical: `/menu/${category}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/menu/${category}`,
+      type: 'website',
+      images: [
+        {
+          url: cat.imageUrl,
+          width: 1200,
+          height: 800,
+          alt: `${cat.label} – Luz de Luna Hannover`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [cat.imageUrl],
+    },
   }
 }
 
@@ -28,8 +55,35 @@ export default async function MenuCategoryPage({ params }: PageProps) {
   const cat = menuCategories.find(c => c.slug === category)
   if (!cat) notFound()
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Menu',
+    name: cat.label,
+    description: cat.description,
+    inLanguage: 'de',
+    hasMenuSection: {
+      '@type': 'MenuSection',
+      name: cat.label,
+      description: cat.description,
+      hasMenuItem: cat.items.map(item => ({
+        '@type': 'MenuItem',
+        name: item.name,
+        description: item.description,
+        offers: {
+          '@type': 'Offer',
+          price: item.price.replace('€', '').replace(',', '.').trim(),
+          priceCurrency: 'EUR',
+        },
+      })),
+    },
+  }
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
       <MenuCategoryPageClient category={cat} />
       <Footer />

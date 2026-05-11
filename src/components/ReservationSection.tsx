@@ -13,26 +13,43 @@ export default function ReservationSection() {
   const [form, setForm] = useState({
     name: '', email: '', phone: '',
     persons: '2', date: '', time: '19:00', notes: '',
+    _trap: '', // honeypot — must stay empty
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading]     = useState(false)
+  const [error, setError]         = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    await new Promise(r => setTimeout(r, 900))
-    setLoading(false)
-    setSubmitted(true)
+    setError('')
+    try {
+      const res = await fetch('/api/reservation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const json = await res.json()
+      if (!res.ok || !json.ok) throw new Error(json.error || 'Unbekannter Fehler')
+      setSubmitted(true)
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Etwas ist schiefgelaufen. Bitte rufen Sie uns an: +49 511 12345',
+      )
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <section id="reservation" className="relative py-32 md:py-44 bg-[#0A0805] overflow-hidden">
-      {/* Ambient gold glow top-right */}
+      {/* Ambient gold glow */}
       <div
         className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at top right, rgba(197,161,127,0.055) 0%, transparent 65%)' }}
       />
-      {/* Top separator */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C5A17F]/20 to-transparent" />
 
       <div className="max-w-2xl mx-auto px-6 lg:px-10 relative z-10">
@@ -69,25 +86,25 @@ export default function ReservationSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
               className="py-20 text-center border border-[#C5A17F]/15 bg-[#1C1914]"
             >
               <motion.div
                 initial={{ scale: 0.7, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
                 className="mb-8"
               >
-                <CheckCircle2 size={44} className="text-[#C5A17F] mx-auto" strokeWidth={1.25} />
+                <CheckCircle2 size={44} strokeWidth={1} className="text-[#C5A17F] mx-auto" />
               </motion.div>
               <p className="text-[#C5A17F] text-[9px] tracking-[0.38em] uppercase font-inter font-light mb-4">Anfrage eingegangen</p>
               <h3 className="font-cormorant text-3xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">Vielen Dank!</h3>
               <p className="text-[#FAF8F4]/35 font-inter font-light text-[13px] leading-[1.9] max-w-[280px] mx-auto mb-10">
-                Wir bestätigen Ihre Reservierung<br />innerhalb weniger Stunden per E-Mail.
+                Ihre Anfrage wurde an uns weitergeleitet.<br />Wir bestätigen innerhalb weniger Stunden per E-Mail.
               </p>
               <div className="w-8 h-px bg-[#C5A17F]/30 mx-auto mb-8" />
               <button
-                onClick={() => setSubmitted(false)}
+                onClick={() => { setSubmitted(false); setForm(f => ({ ...f, name:'', email:'', phone:'', date:'', notes:'' })) }}
                 className="text-[#C5A17F]/50 font-inter text-[9px] tracking-[0.28em] uppercase hover:text-[#C5A17F] transition-colors duration-200"
               >
                 Neue Anfrage stellen
@@ -102,25 +119,37 @@ export default function ReservationSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="space-y-0 border border-[#FDFCFA]/6 bg-[#14120E]"
+              className="border border-[#FDFCFA]/6 bg-[#14120E]"
             >
-              {/* Row 1: Name + Email */}
+              {/* Honeypot — hidden from real users, traps bots */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}>
+                <input
+                  type="text"
+                  name="_trap"
+                  value={form._trap}
+                  onChange={e => setForm({ ...form, _trap: e.target.value })}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
+              {/* Row 1 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 border-b border-[#FDFCFA]/6">
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>Name *</label>
-                  <input required type="text" placeholder="Ihr vollständiger Name"
+                  <input required type="text" placeholder="Ihr vollständiger Name" autoComplete="name"
                     value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                     className={inputBase} />
                 </div>
                 <div className="p-6">
                   <label className={labelClass}>E-Mail *</label>
-                  <input required type="email" placeholder="ihre@email.de"
+                  <input required type="email" placeholder="ihre@email.de" autoComplete="email"
                     value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
                     className={inputBase} />
                 </div>
               </div>
 
-              {/* Row 2: Phone + Persons */}
+              {/* Row 2 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 border-b border-[#FDFCFA]/6">
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>
@@ -128,7 +157,7 @@ export default function ReservationSection() {
                       <Phone size={8} strokeWidth={1} />Telefon
                     </span>
                   </label>
-                  <input type="tel" placeholder="+49 511 …"
+                  <input type="tel" placeholder="+49 511 …" autoComplete="tel"
                     value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
                     className={inputBase} />
                 </div>
@@ -148,15 +177,15 @@ export default function ReservationSection() {
                         </option>
                       ))}
                     </select>
-                    <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
-                      <div className="w-3 h-px bg-[#C5A17F]/50 rotate-[45deg] translate-x-[2px]" />
-                      <div className="w-3 h-px bg-[#C5A17F]/50 -rotate-[45deg] -translate-x-[2px]" />
+                    <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-[3px]">
+                      <div className="w-[6px] h-px bg-[#C5A17F]/50 rotate-[45deg] translate-x-[1px]" />
+                      <div className="w-[6px] h-px bg-[#C5A17F]/50 -rotate-[45deg] -translate-x-[1px]" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Row 3: Date + Time */}
+              {/* Row 3 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 border-b border-[#FDFCFA]/6">
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>
@@ -183,15 +212,15 @@ export default function ReservationSection() {
                         <option key={t} value={t} className="bg-[#14120E]">{t} Uhr</option>
                       ))}
                     </select>
-                    <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2">
-                      <div className="w-3 h-px bg-[#C5A17F]/50 rotate-[45deg] translate-x-[2px]" />
-                      <div className="w-3 h-px bg-[#C5A17F]/50 -rotate-[45deg] -translate-x-[2px]" />
+                    <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-[3px]">
+                      <div className="w-[6px] h-px bg-[#C5A17F]/50 rotate-[45deg] translate-x-[1px]" />
+                      <div className="w-[6px] h-px bg-[#C5A17F]/50 -rotate-[45deg] -translate-x-[1px]" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Row 4: Notes */}
+              {/* Row 4 */}
               <div className="p-6 border-b border-[#FDFCFA]/6">
                 <label className={labelClass}>Besondere Wünsche</label>
                 <textarea rows={3} placeholder="Allergien, Anlass, Sitzwunsch…"
@@ -199,16 +228,25 @@ export default function ReservationSection() {
                   className={`${inputBase} resize-none`} />
               </div>
 
+              {/* Error message */}
+              {error && (
+                <div className="px-6 pt-5">
+                  <p className="text-red-400/80 font-inter text-[12px] font-light leading-[1.7] border-l-2 border-red-400/40 pl-3">
+                    {error}
+                  </p>
+                </div>
+              )}
+
               {/* Submit */}
               <div className="p-6">
                 <button
                   type="submit"
                   disabled={loading}
                   className="w-full bg-[#C5A17F] text-[#0A0805] py-4 font-inter font-semibold
-                    text-[10px] tracking-[0.32em] uppercase relative overflow-hidden
+                    text-[10px] tracking-[0.32em] uppercase
                     hover:bg-[#D4B38C] transition-all duration-300
                     hover:-translate-y-[2px] hover:shadow-[0_12px_40px_rgba(197,161,127,0.22)]
-                    disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+                    disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
                 >
                   {loading ? (
                     <span className="flex items-center justify-center gap-2.5">
