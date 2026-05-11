@@ -77,7 +77,7 @@ export default function HeroSection() {
           {/* Location tag */}
           <motion.div variants={item} className="flex items-center gap-2.5 mb-10">
             <div className="w-10 h-px bg-[#C5A17F]/60" />
-            <MapPin size={10} className="text-[#C5A17F]" />
+            <MapPin size={10} strokeWidth={1} className="text-[#C5A17F]" />
             <span className="text-[#C5A17F] text-[9px] tracking-[0.38em] uppercase font-inter font-light">
               Hannover · Linden · Falkenstraße 22A
             </span>

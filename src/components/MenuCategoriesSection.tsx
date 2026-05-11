@@ -99,7 +99,7 @@ export default function MenuCategoriesSection() {
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                 >
-                  <ArrowUpRight size={13} className="text-[#C5A17F]" />
+                  <ArrowUpRight size={13} strokeWidth={1} className="text-[#C5A17F]" />
                 </motion.div>
 
                 {/* ── Glassmorphism content box ── */}

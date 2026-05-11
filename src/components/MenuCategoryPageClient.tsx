@@ -47,7 +47,7 @@ export default function MenuCategoryPageClient({ category }: Props) {
             className="inline-flex items-center gap-2 text-[#C5A17F] font-inter text-[10px] tracking-[0.25em] uppercase mb-5 group
               hover:gap-3 transition-all duration-300"
           >
-            <ArrowLeft size={11} className="transition-transform duration-300 group-hover:-translate-x-1" />
+            <ArrowLeft size={11} strokeWidth={1} className="transition-transform duration-300 group-hover:-translate-x-1" />
             Zurück zur Übersicht
           </Link>
           <p className="text-[#C5A17F] text-[9px] tracking-[0.35em] uppercase font-inter font-light mb-2">{category.eyebrow}</p>

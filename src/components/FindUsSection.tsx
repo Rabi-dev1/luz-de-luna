@@ -103,7 +103,7 @@ export default function FindUsSection() {
                 <div className="relative mx-auto mb-4 w-12 h-12">
                   <div className="absolute inset-0 bg-[#C5A17F]/20 rounded-full animate-ping" />
                   <div className="relative w-12 h-12 bg-[#C5A17F] flex items-center justify-center shadow-[0_8px_32px_rgba(197,161,127,0.35)]">
-                    <MapPin size={18} className="text-[#0A0805]" />
+                    <MapPin size={18} strokeWidth={1} className="text-[#0A0805]" />
                   </div>
                 </div>
                 <p className="font-cormorant text-xl font-semibold text-[#FDFCFA] tracking-[0.04em]">Luz de Luna</p>
@@ -137,7 +137,7 @@ export default function FindUsSection() {
             {/* Opening Hours */}
             <div className="px-8 py-10 border-b border-white/[0.06]">
               <div className="flex items-center gap-2.5 mb-7">
-                <Clock size={12} className="text-[#C5A17F]" />
+                <Clock size={12} strokeWidth={1} className="text-[#C5A17F]" />
                 <h3 className="font-cormorant text-[1.35rem] font-semibold text-[#FDFCFA] tracking-[0.03em]">Öffnungszeiten</h3>
               </div>
               <div className="space-y-0">
@@ -161,20 +161,20 @@ export default function FindUsSection() {
               <h3 className="font-cormorant text-[1.35rem] font-semibold text-[#FDFCFA] mb-7 tracking-[0.03em]">Kontakt</h3>
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
-                  <MapPin size={12} className="text-[#C5A17F] mt-0.5 shrink-0" />
+                  <MapPin size={12} strokeWidth={1} className="text-[#C5A17F] mt-0.5 shrink-0" />
                   <div>
                     <p className="text-[#FAF8F4]/60 font-inter text-[13px] font-light tracking-[0.03em]">Falkenstraße 22A</p>
                     <p className="text-[#FAF8F4]/35 font-inter text-[13px] font-light">30449 Hannover-Linden</p>
                   </div>
                 </div>
                 <a href="tel:+4951112345" className="flex items-center gap-4 group/link">
-                  <Phone size={12} className="text-[#C5A17F] shrink-0" />
+                  <Phone size={12} strokeWidth={1} className="text-[#C5A17F] shrink-0" />
                   <span className="text-[#FAF8F4]/55 font-inter text-[13px] font-light tracking-[0.03em] group-hover/link:text-[#C5A17F] transition-colors duration-200">
                     +49 511 12345
                   </span>
                 </a>
                 <a href="mailto:info@luz-de-luna.de" className="flex items-center gap-4 group/link">
-                  <Mail size={12} className="text-[#C5A17F] shrink-0" />
+                  <Mail size={12} strokeWidth={1} className="text-[#C5A17F] shrink-0" />
                   <span className="text-[#FAF8F4]/55 font-inter text-[13px] font-light tracking-[0.03em] group-hover/link:text-[#C5A17F] transition-colors duration-200">
                     info@luz-de-luna.de
                   </span>

@@ -53,7 +53,7 @@ export default function ReservationSection() {
             <em className="text-[#C5A17F]">reservieren</em>
           </h2>
           <p className="text-[#FAF8F4]/30 font-inter font-light text-[13px] tracking-[0.04em] mb-14 flex items-center gap-2.5">
-            <Phone size={11} className="text-[#C5A17F]/60" />
+            <Phone size={11} strokeWidth={1} className="text-[#C5A17F]/60" />
             Oder telefonisch:{' '}
             <a href="tel:+4951112345" className="text-[#C5A17F]/70 hover:text-[#C5A17F] transition-colors duration-200">
               +49 511 12345
@@ -125,7 +125,7 @@ export default function ReservationSection() {
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>
                     <span className="flex items-center gap-1.5">
-                      <Phone size={8} />Telefon
+                      <Phone size={8} strokeWidth={1} />Telefon
                     </span>
                   </label>
                   <input type="tel" placeholder="+49 511 …"
@@ -135,7 +135,7 @@ export default function ReservationSection() {
                 <div className="p-6">
                   <label className={labelClass}>
                     <span className="flex items-center gap-1.5">
-                      <Users size={8} />Personen *
+                      <Users size={8} strokeWidth={1} />Personen *
                     </span>
                   </label>
                   <div className="relative">
@@ -161,7 +161,7 @@ export default function ReservationSection() {
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>
                     <span className="flex items-center gap-1.5">
-                      <CalendarDays size={8} />Datum *
+                      <CalendarDays size={8} strokeWidth={1} />Datum *
                     </span>
                   </label>
                   <input required type="date"
@@ -172,7 +172,7 @@ export default function ReservationSection() {
                 <div className="p-6">
                   <label className={labelClass}>
                     <span className="flex items-center gap-1.5">
-                      <Clock size={8} />Uhrzeit *
+                      <Clock size={8} strokeWidth={1} />Uhrzeit *
                     </span>
                   </label>
                   <div className="relative">

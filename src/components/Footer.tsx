@@ -44,19 +44,19 @@ export default function Footer() {
             <h4 className="text-[#FAF8F4]/25 font-inter text-[9px] tracking-[0.3em] uppercase mb-5">Kontakt</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin size={11} className="text-[#C5A17F] mt-0.5 shrink-0" />
+                <MapPin size={11} strokeWidth={1} className="text-[#C5A17F] mt-0.5 shrink-0" />
                 <p className="text-[#D4C9B8]/45 font-inter font-light text-[13px] leading-[1.7]">
                   Falkenstraße 22A<br />30449 Hannover
                 </p>
               </div>
               <a href="tel:+4951112345" className="flex items-center gap-3 group">
-                <Phone size={11} className="text-[#C5A17F] shrink-0" />
+                <Phone size={11} strokeWidth={1} className="text-[#C5A17F] shrink-0" />
                 <span className="text-[#D4C9B8]/45 font-inter font-light text-[13px] group-hover:text-[#C5A17F] transition-colors duration-200">
                   +49 511 12345
                 </span>
               </a>
               <a href="mailto:info@luz-de-luna.de" className="flex items-center gap-3 group">
-                <Mail size={11} className="text-[#C5A17F] shrink-0" />
+                <Mail size={11} strokeWidth={1} className="text-[#C5A17F] shrink-0" />
                 <span className="text-[#D4C9B8]/45 font-inter font-light text-[13px] group-hover:text-[#C5A17F] transition-colors duration-200">
                   info@luz-de-luna.de
                 </span>

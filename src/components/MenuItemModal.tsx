@@ -100,7 +100,7 @@ export default function MenuItemModal({ item, onClose }: ModalProps) {
                     hover:bg-[#2C2A26] transition-all duration-200 border border-white/8"
                   aria-label="Schließen"
                 >
-                  <X size={14} />
+                  <X size={14} strokeWidth={1} />
                 </button>
               </div>
 
@@ -129,7 +129,7 @@ export default function MenuItemModal({ item, onClose }: ModalProps) {
                 {/* Allergens */}
                 <div className="border-l-[1.5px] border-[#C5A17F]/30 pl-4 py-2 mb-8">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <AlertCircle size={10} className="text-[#C5A17F]/60" />
+                    <AlertCircle size={10} strokeWidth={1} className="text-[#C5A17F]/60" />
                     <span className="text-[#C5A17F]/60 text-[9px] tracking-[0.28em] uppercase font-inter font-light">
                       Allergene & Hinweise
                     </span>
