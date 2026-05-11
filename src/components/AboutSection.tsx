@@ -1,92 +1,139 @@
 'use client'
-import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+
+const statItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.1 + 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] },
+  }),
+}
 
 export default function AboutSection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const inViewRef  = useRef(null)
+  const inView     = useInView(inViewRef, { once: true, margin: '-100px' })
+
+  /* Subtle parallax on the image inside the section */
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%'])
+
+  const stats = [
+    ['80%',    'Regionale\nZutaten'],
+    ['4.8 ★',  'Google\nBewertung'],
+    ['Täglich', 'Frisch\ngekocht'],
+  ]
 
   return (
-    // Negative top margin so the image from above "bleeds" into this section
-    // z-10 ensures this section sits above the menu section below
-    <section id="about" className="relative z-10 pt-32 md:pt-40 pb-40 md:pb-52 bg-[#FAF8F4] -mt-16">
-      {/* Subtle top shadow for depth illusion */}
-      <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#14120E]/12 to-transparent pointer-events-none" />
+    <section
+      id="about"
+      ref={sectionRef}
+      /* Overlaps with the dark section above */
+      className="relative z-10 pt-28 md:pt-36 pb-36 md:pb-52 bg-[#FAF8F4] -mt-12"
+    >
+      {/* Soft shadow from above to sell the overlap */}
+      <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0A0805]/10 to-transparent pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
-          {/* Image — overflows DOWNWARD into the next section */}
+          {/* ── Image column ── bleeds into the section below */}
           <motion.div
-            ref={ref}
-            initial={{ opacity: 0, x: -50 }}
+            ref={inViewRef}
+            initial={{ opacity: 0, x: -48 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative lg:mb-[-80px]"
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative lg:mb-[-100px]"
           >
-            <div className="relative aspect-[3/4] overflow-hidden">
-              <div
-                className="absolute inset-0 bg-cover bg-center food-img"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80')" }}
-              />
-              {/* Subtle inner shadow for depth */}
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(20,18,14,0.2)]" />
-
-              {/* Floating "Seit 2018" badge */}
+            {/* Image with own parallax scroll */}
+            <div className="relative aspect-[4/5] overflow-hidden">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5, duration: 0.7 }}
-                className="absolute bottom-8 -right-5 bg-[#2C2A26] px-6 py-5 shadow-2xl z-10"
-              >
-                <p className="font-cormorant text-[#C5A059] text-5xl font-semibold leading-none tracking-tight">2018</p>
-                <p className="text-[#FAF8F4]/40 font-inter text-[10px] tracking-[0.25em] uppercase font-light mt-1.5">In Hannover</p>
-              </motion.div>
+                className="absolute inset-0 bg-cover bg-center food-img"
+                style={{
+                  backgroundImage: "url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=85')",
+                  y: imageY,
+                  scale: 1.08,
+                }}
+              />
+              {/* Warm inner vignette */}
+              <div
+                className="absolute inset-0"
+                style={{ boxShadow: 'inset 0 0 80px rgba(10,8,5,0.15)' }}
+              />
             </div>
 
-            {/* Gold line decoration */}
-            <div className="absolute -left-4 top-1/3 w-px h-24 bg-gradient-to-b from-transparent via-[#C5A059]/40 to-transparent hidden lg:block" />
+            {/* "Seit 2018" floating badge — slightly outside the image for depth */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85, y: 12 }}
+              animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
+              transition={{ delay: 0.55, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute -bottom-5 -right-4 md:right-0 bg-[#1C1914] px-7 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.3)] z-10"
+            >
+              <p className="font-cormorant text-[#C5A17F] text-5xl md:text-6xl font-semibold leading-none tracking-tight">2018</p>
+              <p className="text-[#FAF8F4]/30 font-inter text-[9px] tracking-[0.28em] uppercase font-light mt-2">In Hannover</p>
+            </motion.div>
+
+            {/* Vertical gold accent line */}
+            <motion.div
+              initial={{ scaleY: 0 }}
+              animate={inView ? { scaleY: 1 } : {}}
+              transition={{ delay: 0.3, duration: 0.9 }}
+              className="absolute -left-5 top-1/4 w-px h-32 bg-gradient-to-b from-transparent via-[#C5A17F]/35 to-transparent origin-top hidden lg:block"
+            />
           </motion.div>
 
-          {/* Text */}
+          {/* ── Text column ── */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 48 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 pt-0 lg:pt-10"
+            transition={{ duration: 1.0, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 lg:pt-8"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-6 h-px bg-[#C5A059]" />
-              <span className="text-[#C5A059] text-[10px] tracking-[0.35em] uppercase font-inter font-light">Unsere Geschichte</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#C5A17F]/55" />
+              <span className="text-[#C5A17F] text-[9px] tracking-[0.38em] uppercase font-inter font-light">
+                Unsere Geschichte
+              </span>
             </div>
 
-            <h2 className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-semibold text-[#1A1815] leading-[1.0] mb-6 tracking-[0.01em]">
-              Mehr als ein<br /><em className="text-[#2C2A26]">Restaurant</em>
+            <h2 className="font-cormorant text-5xl md:text-6xl lg:text-[4.5rem] font-semibold text-[#14120E] leading-[1.0] mb-6 tracking-[0.01em]">
+              Mehr als ein<br />
+              <em className="text-[#2C2A26]">Restaurant</em>
             </h2>
 
-            <div className="w-10 h-px bg-[#C5A059] mb-10" />
+            <div className="w-10 h-px bg-[#C5A17F] mb-10" />
 
-            <p className="text-[#6B6560] font-inter font-light text-base leading-[2.0] mb-6 tracking-[0.01em]">
-              <strong className="font-medium text-[#1A1815] tracking-[0.02em]">Luz de Luna</strong> — Mondlicht.
-              So wie der Mond sein ruhiges, warmes Licht auf Hannover wirft, so wollen wir eine Oase
-              der Gemütlichkeit mitten in der Stadt sein. Gegründet 2018 in Hannover-Linden.
+            <p className="text-[#6B6560] font-inter font-light text-[15px] leading-[2.05] mb-6 tracking-[0.01em]">
+              <strong className="font-medium text-[#14120E]">Luz de Luna</strong> — Mondlicht.
+              So wie der Mond sein ruhiges, warmes Licht über Hannover wirft,
+              so wollen wir sein: eine stille Oase des Genusses mitten im Alltag.
+              Gegründet 2018 in Hannover-Linden, aus der Überzeugung heraus,
+              dass gutes Essen Momente schafft, die bleiben.
             </p>
-            <p className="text-[#6B6560] font-inter font-light text-base leading-[2.0] mb-12 tracking-[0.01em]">
-              Unsere Küche lebt von der Vielfalt Niedersachsens — frisches Gemüse vom Wochenmarkt,
-              Fleisch von regionalen Höfen, Fisch aus nachhaltigem Fang. Saisonal, ehrlich,
-              mit Liebe zubereitet.
+            <p className="text-[#6B6560] font-inter font-light text-[15px] leading-[2.05] mb-14 tracking-[0.01em]">
+              Unsere Küche lebt von der Vielfalt Niedersachsens —
+              frisches Gemüse vom Wochenmarkt, Fleisch von regionalen Höfen,
+              Fisch aus nachhaltigem Fang. Saisonal, ehrlich, präzise.
             </p>
 
-            <div className="grid grid-cols-3 gap-8 pt-10 border-t border-[#D4C9B8]/60">
-              {[
-                ['80%',    'Regionale\nZutaten'],
-                ['4.8 ★',  'Google\nBewertung'],
-                ['Täglich','Frisch\nGekocht'],
-              ].map(([val, label]) => (
-                <div key={val}>
-                  <p className="font-cormorant text-3xl md:text-4xl font-semibold text-[#C5A059] tracking-[0.02em]">{val}</p>
-                  <p className="text-[#6B6560] font-inter font-light text-xs leading-[1.7] mt-2 whitespace-pre-line tracking-[0.05em] uppercase">{label}</p>
-                </div>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 md:gap-10 pt-10 border-t border-[#D4C9B8]/50">
+              {stats.map(([val, label], i) => (
+                <motion.div
+                  key={val}
+                  custom={i}
+                  variants={statItem}
+                  initial="hidden"
+                  animate={inView ? 'show' : 'hidden'}
+                >
+                  <p className="font-cormorant text-[2.2rem] md:text-[2.6rem] font-semibold text-[#C5A17F] tracking-tight leading-none">
+                    {val}
+                  </p>
+                  <p className="text-[#6B6560] font-inter font-light text-[11px] leading-[1.6] mt-2.5 whitespace-pre-line tracking-[0.08em] uppercase">
+                    {label}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </motion.div>
