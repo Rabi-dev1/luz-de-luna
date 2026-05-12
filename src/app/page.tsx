@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Navigation from '@/components/Navigation'
 import HeroSection from '@/components/HeroSection'
 import MenuCategoriesSection from '@/components/MenuCategoriesSection'
+import MoodSection from '@/components/MoodSection'
 import AboutSection from '@/components/AboutSection'
 import FindUsSection from '@/components/FindUsSection'
 import ReservationSection from '@/components/ReservationSection'
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Navigation />
       <HeroSection />
       <MenuCategoriesSection />
+      <MoodSection />
       <AboutSection />
       <FindUsSection />
       <ReservationSection />

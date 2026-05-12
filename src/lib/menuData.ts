@@ -29,7 +29,7 @@ export const menuCategories: MenuCategory[] = [
     shortLabel: 'Frühstück',
     eyebrow: 'Ab 08:00 Uhr',
     description: 'Starten Sie den Tag mit frischen, regionalen Zutaten und handgemachten Spezialitäten.',
-    imageUrl: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=1200&q=80',
+    imageUrl: '/images/omelett.jpg.jpeg',
     items: [
       {
         id: 'avocado-toast',
@@ -104,7 +104,7 @@ export const menuCategories: MenuCategory[] = [
     shortLabel: 'Dinner',
     eyebrow: 'Ab 17:00 Uhr',
     description: 'Regionale Küche mit mediterranen Einflüssen — für besondere Abende.',
-    imageUrl: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
+    imageUrl: '/images/pasta.jpg.jpeg',
     items: [
       {
         id: 'rinderfilet-luna',
@@ -168,7 +168,7 @@ export const menuCategories: MenuCategory[] = [
     shortLabel: 'Drinks',
     eyebrow: 'Täglich',
     description: 'Von morgendlichem Flat White bis zum nächtlichen Signature Cocktail.',
-    imageUrl: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80',
+    imageUrl: '/images/getränk.jpg.jpeg',
     items: [
       {
         id: 'luna-cocktail',
