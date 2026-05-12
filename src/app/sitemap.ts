@@ -16,9 +16,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: base,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 1.0,
     },
     ...menuPages,
+    {
+      url: `${base}/impressum`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.2,
+    },
+    {
+      url: `${base}/datenschutz`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.2,
+    },
   ]
 }

@@ -6,7 +6,7 @@ const statItem = {
   hidden: { opacity: 0, y: 20 },
   show: (i: number) => ({
     opacity: 1, y: 0,
-    transition: { delay: i * 0.1 + 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] },
+    transition: { delay: i * 0.07 + 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] },
   }),
 }
 
@@ -41,7 +41,7 @@ export default function AboutSection() {
             ref={inViewRef}
             initial={{ opacity: 0, x: -48 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative lg:mb-[-100px]"
           >
             <div className="relative aspect-[4/5] overflow-hidden">
@@ -63,7 +63,7 @@ export default function AboutSection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 12 }}
               animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
-              transition={{ delay: 0.55, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="absolute -bottom-5 -right-4 md:right-0 bg-[#1C1914] border border-[#FDFCFA]/6 px-7 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-10"
             >
               <p className="font-cormorant text-[#C9A96E] text-5xl md:text-6xl font-semibold leading-none tracking-tight">2018</p>
@@ -83,7 +83,7 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 48 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.0, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 lg:pt-8"
           >
             <div className="flex items-center gap-3 mb-6">

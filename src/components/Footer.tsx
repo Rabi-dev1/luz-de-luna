@@ -71,12 +71,12 @@ export default function Footer() {
             © 2026 Luz de Luna. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-[#FAF8F4]/18 hover:text-[#C5A17F] font-inter font-light text-[11px] tracking-[0.08em] transition-colors duration-200">
+            <Link href="/impressum" className="text-[#FAF8F4]/18 hover:text-[#C5A17F] font-inter font-light text-[11px] tracking-[0.08em] transition-colors duration-200">
               Impressum
-            </a>
-            <a href="#" className="text-[#FAF8F4]/18 hover:text-[#C5A17F] font-inter font-light text-[11px] tracking-[0.08em] transition-colors duration-200">
+            </Link>
+            <Link href="/datenschutz" className="text-[#FAF8F4]/18 hover:text-[#C5A17F] font-inter font-light text-[11px] tracking-[0.08em] transition-colors duration-200">
               Datenschutz
-            </a>
+            </Link>
           </div>
         </div>
       </div>
