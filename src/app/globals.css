@@ -4,33 +4,97 @@
   --font-family-cormorant: var(--font-cormorant), serif;
   --font-family-inter: var(--font-inter), sans-serif;
 
-  --color-cream: #FAF8F4;
-  --color-beige: #EDE8DF;
-  --color-sand: #D4C9B8;
+  --color-cream:      #FAF8F4;
+  --color-beige:      #EDE8DF;
+  --color-sand:       #D4C9B8;
   --color-anthracite: #2C2A26;
-  --color-charcoal: #1A1815;
-  --color-gold: #C9A96E;
-  --color-gold-light: #E0C48A;
+  --color-charcoal:   #14120E;
+  --color-gold:       #C5A17F;
+  --color-gold-warm:  #D4B38C;
   --color-text-muted: #6B6560;
 }
 
 :root {
   --font-cormorant: 'Cormorant Garamond', serif;
   --font-inter: 'Inter', sans-serif;
+  /* Shared easing curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
   background-color: #FAF8F4;
-  color: #1A1815;
+  color: #14120E;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #FAF8F4; }
-::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 2px; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #14120E; }
+::-webkit-scrollbar-thumb { background: #C5A17F; border-radius: 2px; }
 
 .font-cormorant { font-family: var(--font-cormorant); }
-.font-inter { font-family: var(--font-inter); }
+.font-inter     { font-family: var(--font-inter); }
+
+/* ─── Film grain overlay ─── */
+/* Apply to any section that needs the cinematic texture */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Radial vignette ─── */
+.vignette::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(ellipse at center, transparent 28%, rgba(10, 8, 5, 0.72) 100%);
+}
+
+/* ─── Cinematic food image treatment ─── */
+.food-img {
+  filter: brightness(0.82) contrast(1.07) saturate(0.9);
+}
+
+/* ─── Glassmorphism card ─── */
+.glass-card {
+  background: rgba(14, 12, 8, 0.52);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Stagger animation base ─── */
+/* Used with Framer Motion staggerChildren */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ─── Premium focus ring ─── */
+*:focus-visible {
+  outline: 1px solid #C5A17F;
+  outline-offset: 3px;
+}
+
+/* ─── Respect reduced motion preference ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

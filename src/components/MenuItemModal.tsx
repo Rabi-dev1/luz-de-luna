@@ -20,11 +20,11 @@ export default function MenuItemModal({ item, onClose }: ModalProps) {
   useEffect(() => {
     if (!item) return
     document.body.style.overflow = 'hidden'
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', handler)
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = ''
-      window.removeEventListener('keydown', handler)
+      window.removeEventListener('keydown', onKey)
     }
   }, [item, onClose])
 
@@ -32,7 +32,7 @@ export default function MenuItemModal({ item, onClose }: ModalProps) {
     <AnimatePresence>
       {item && (
         <>
-          {/* Backdrop */}
+          {/* ── Backdrop ── */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}

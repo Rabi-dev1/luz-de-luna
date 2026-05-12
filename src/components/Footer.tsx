@@ -3,46 +3,80 @@ import { MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1815] text-[#FDFCFA]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+    <footer className="bg-[#0A0805] border-t border-[#FDFCFA]/[0.06]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+
+          {/* Brand */}
           <div className="md:col-span-2">
-            <p className="font-cormorant text-3xl font-semibold text-[#C9A96E] tracking-widest uppercase mb-4">Luz de Luna</p>
-            <p className="text-[#D4C9B8]/40 font-inter text-sm leading-relaxed max-w-xs">
-              Restaurant & Café in Hannover-Linden. Regionale Küche, warme Atmosphäre, unvergessliche Momente.
+            <p className="font-cormorant text-3xl font-semibold text-[#C5A17F] tracking-[0.06em] mb-1">Luz de Luna</p>
+            <p className="text-[#FAF8F4]/20 font-inter text-[9px] tracking-[0.3em] uppercase mb-5">Hannover · Linden</p>
+            <p className="text-[#D4C9B8]/35 font-inter font-light text-[13px] leading-[1.9] max-w-[260px]">
+              Restaurant & Café in Hannover-Linden.<br />
+              Regionale Küche, warme Atmosphäre,<br />
+              unvergessliche Momente.
             </p>
           </div>
+
+          {/* Menu links */}
           <div>
-            <h4 className="text-[#D4C9B8]/40 font-inter text-[10px] tracking-[0.2em] uppercase mb-4">Karte</h4>
-            <div className="space-y-2">
-              {[['Frühstück & Brunch', '/menu/fruehstueck'], ['Abendkarte', '/menu/abendkarte'], ['Drinks & Kaffee', '/menu/drinks'], ['Reservierung', '/#reservation']].map(([l,h])=>(
-                <Link key={h} href={h} className="block text-[#D4C9B8]/60 font-inter text-sm hover:text-[#C9A96E] transition-colors">{l}</Link>
+            <h4 className="text-[#FAF8F4]/25 font-inter text-[9px] tracking-[0.3em] uppercase mb-5">Karte</h4>
+            <div className="space-y-3">
+              {[
+                ['Frühstück & Brunch', '/menu/fruehstueck'],
+                ['Abendkarte',         '/menu/abendkarte'],
+                ['Drinks & Kaffee',    '/menu/drinks'],
+                ['Reservierung',       '/#reservation'],
+              ].map(([l, h]) => (
+                <Link
+                  key={h}
+                  href={h}
+                  className="block text-[#D4C9B8]/45 font-inter font-light text-[13px] hover:text-[#C5A17F] transition-colors duration-200"
+                >
+                  {l}
+                </Link>
               ))}
             </div>
           </div>
+
+          {/* Contact */}
           <div>
-            <h4 className="text-[#D4C9B8]/40 font-inter text-[10px] tracking-[0.2em] uppercase mb-4">Kontakt</h4>
-            <div className="space-y-3">
-              <div className="flex items-start gap-2">
-                <MapPin size={12} className="text-[#C9A96E] mt-0.5 shrink-0" />
-                <p className="text-[#D4C9B8]/60 font-inter text-sm">Falkenstraße 22A<br />30449 Hannover</p>
+            <h4 className="text-[#FAF8F4]/25 font-inter text-[9px] tracking-[0.3em] uppercase mb-5">Kontakt</h4>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <MapPin size={11} strokeWidth={1} className="text-[#C5A17F] mt-0.5 shrink-0" />
+                <p className="text-[#D4C9B8]/45 font-inter font-light text-[13px] leading-[1.7]">
+                  Falkenstraße 22A<br />30449 Hannover
+                </p>
               </div>
-              <a href="tel:+4951112345" className="flex items-center gap-2 group">
-                <Phone size={12} className="text-[#C9A96E] shrink-0" />
-                <span className="text-[#D4C9B8]/60 font-inter text-sm group-hover:text-[#C9A96E] transition-colors">+49 511 12345</span>
+              <a href="tel:+4951112345" className="flex items-center gap-3 group">
+                <Phone size={11} strokeWidth={1} className="text-[#C5A17F] shrink-0" />
+                <span className="text-[#D4C9B8]/45 font-inter font-light text-[13px] group-hover:text-[#C5A17F] transition-colors duration-200">
+                  +49 511 12345
+                </span>
               </a>
-              <a href="mailto:info@luz-de-luna.de" className="flex items-center gap-2 group">
-                <Mail size={12} className="text-[#C9A96E] shrink-0" />
-                <span className="text-[#D4C9B8]/60 font-inter text-sm group-hover:text-[#C9A96E] transition-colors">info@luz-de-luna.de</span>
+              <a href="mailto:info@luz-de-luna.de" className="flex items-center gap-3 group">
+                <Mail size={11} strokeWidth={1} className="text-[#C5A17F] shrink-0" />
+                <span className="text-[#D4C9B8]/45 font-inter font-light text-[13px] group-hover:text-[#C5A17F] transition-colors duration-200">
+                  info@luz-de-luna.de
+                </span>
               </a>
             </div>
           </div>
         </div>
-        <div className="border-t border-[#D4C9B8]/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-[#D4C9B8]/25 font-inter text-xs">© 2025 Luz de Luna. Alle Rechte vorbehalten.</p>
-          <div className="flex gap-5">
-            <a href="#" className="text-[#D4C9B8]/25 hover:text-[#C9A96E] font-inter text-xs transition-colors">Impressum</a>
-            <a href="#" className="text-[#D4C9B8]/25 hover:text-[#C9A96E] font-inter text-xs transition-colors">Datenschutz</a>
+
+        {/* Bottom bar */}
+        <div className="border-t border-[#FDFCFA]/[0.06] pt-7 flex flex-col sm:flex-row justify-between items-center gap-3">
+          <p className="text-[#FAF8F4]/18 font-inter font-light text-[11px] tracking-[0.06em]">
+            © 2026 Luz de Luna. Alle Rechte vorbehalten.
+          </p>
+          <div className="flex gap-6">
+            <a href="#" className="text-[#FAF8F4]/18 hover:text-[#C5A17F] font-inter font-light text-[11px] tracking-[0.08em] transition-colors duration-200">
+              Impressum
+            </a>
+            <a href="#" className="text-[#FAF8F4]/18 hover:text-[#C5A17F] font-inter font-light text-[11px] tracking-[0.08em] transition-colors duration-200">
+              Datenschutz
+            </a>
           </div>
         </div>
       </div>

@@ -4,6 +4,14 @@ import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { menuCategories } from '@/lib/menuData'
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 48 },
+  show: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.14, duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] },
+  }),
+}
+
 export default function MenuCategoriesSection() {
   return (
     <section id="menu" className="relative py-24 md:py-36 overflow-hidden">
