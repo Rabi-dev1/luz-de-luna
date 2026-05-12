@@ -38,7 +38,7 @@ export default function HeroSection() {
         {/* IMAGE SLOT — swap URL for final photo */}
         <div
           className="absolute inset-0 bg-cover bg-center food-img"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1920&q=90')" }}
+          style={{ backgroundImage: "url('/images/herobild.jpg.jpeg')" }}
         />
       </motion.div>
 

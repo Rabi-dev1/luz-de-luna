@@ -20,7 +20,7 @@ export default function MenuCategoriesSection() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/sitz.jpg.jpeg')" }}
       />
-      <div className="absolute inset-0 bg-[#FAF8F4]/92" />
+      <div className="absolute inset-0 bg-[#0C0A08]/90" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -42,7 +42,7 @@ export default function MenuCategoriesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.75, delay: 0.1 }}
-              className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-semibold text-[#1A1815] leading-[1.0] tracking-[0.01em]"
+              className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-semibold text-[#FDFCFA] leading-[1.0] tracking-[0.01em]"
             >
               Unsere<br /><em className="text-[#C9A96E]">Highlights</em>
             </motion.h2>
@@ -52,7 +52,7 @@ export default function MenuCategoriesSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-[#6B6560] font-inter font-light text-[13px] max-w-[230px] leading-[1.9] tracking-[0.03em] md:text-right"
+            className="text-[#D4C9B8]/50 font-inter font-light text-[13px] max-w-[230px] leading-[1.9] tracking-[0.03em] md:text-right"
           >
             Regionale Zutaten,<br />saisonale Karte —<br />täglich frisch.
           </motion.p>

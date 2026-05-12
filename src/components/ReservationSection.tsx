@@ -1,45 +1,85 @@
 'use client'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle2, CalendarDays, Users, Clock, Phone } from 'lucide-react'
+import { Phone, CalendarDays, Users, Clock } from 'lucide-react'
 
 const timeSlots = ['12:00','12:30','13:00','13:30','14:00','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00']
 
-const labelClass = "block text-[#C5A17F]/60 font-inter text-[9px] tracking-[0.3em] uppercase mb-2.5"
-const inputBase  = "w-full bg-transparent border border-[#FDFCFA]/8 px-4 py-3.5 text-[#FDFCFA] font-inter text-[13px] font-light placeholder:text-[#FAF8F4]/20 focus:outline-none focus:border-[#C5A17F]/50 hover:border-[#FDFCFA]/15 transition-colors duration-300 [color-scheme:dark]"
-const selectBase = `${inputBase} cursor-pointer bg-[#14120E] appearance-none`
+const labelClass = "block text-[#C9A96E]/60 font-inter text-[9px] tracking-[0.3em] uppercase mb-2.5"
+const inputBase  = "w-full bg-transparent border border-[#FDFCFA]/8 px-4 py-3.5 text-[#FDFCFA] font-inter text-[13px] font-light placeholder:text-[#FAF8F4]/20 focus:outline-none focus:border-[#C9A96E]/50 hover:border-[#FDFCFA]/15 transition-colors duration-300 [color-scheme:dark]"
+const selectBase = `${inputBase} cursor-pointer bg-[#110F0C] appearance-none`
+const errorClass = "mt-1.5 text-red-400/70 font-inter text-[10px] tracking-[0.04em]"
+
+type FormData = {
+  name: string
+  email: string
+  phone: string
+  persons: string
+  date: string
+  time: string
+  notes: string
+  _trap: string
+}
+
+function GoldCheckmark() {
+  return (
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" className="mx-auto mb-8">
+      <motion.circle
+        cx="28" cy="28" r="26"
+        stroke="#C9A96E"
+        strokeWidth="1"
+        strokeLinecap="round"
+        fill="none"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
+      />
+      <motion.path
+        d="M17 28.5l8 8 14-16"
+        stroke="#C9A96E"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
+      />
+    </svg>
+  )
+}
 
 export default function ReservationSection() {
-  const [form, setForm] = useState({
-    name: '', email: '', phone: '',
-    persons: '2', date: '', time: '19:00', notes: '',
-    _trap: '', // honeypot — must stay empty
-  })
   const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading]     = useState(false)
-  const [error, setError]         = useState('')
+  const [serverError, setServerError] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormData>({
+    defaultValues: { persons: '2', time: '19:00', _trap: '' },
+  })
+
+  const onSubmit = async (data: FormData) => {
+    setServerError('')
     try {
       const res = await fetch('/api/reservation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(data),
       })
       const json = await res.json()
       if (!res.ok || !json.ok) throw new Error(json.error || 'Unbekannter Fehler')
       setSubmitted(true)
     } catch (err: unknown) {
-      setError(
+      setServerError(
         err instanceof Error
           ? err.message
           : 'Etwas ist schiefgelaufen. Bitte rufen Sie uns an: +49 511 12345',
       )
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -48,9 +88,9 @@ export default function ReservationSection() {
       {/* Ambient gold glow */}
       <div
         className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at top right, rgba(197,161,127,0.055) 0%, transparent 65%)' }}
+        style={{ background: 'radial-gradient(ellipse at top right, rgba(201,169,110,0.055) 0%, transparent 65%)' }}
       />
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C5A17F]/20 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C9A96E]/20 to-transparent" />
 
       <div className="max-w-2xl mx-auto px-6 lg:px-10 relative z-10">
 
@@ -62,17 +102,17 @@ export default function ReservationSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-8 h-px bg-[#C5A17F]/50" />
-            <span className="text-[#C5A17F] text-[9px] tracking-[0.38em] uppercase font-inter font-light">Online Buchung</span>
+            <div className="w-8 h-px bg-[#C9A96E]/50" />
+            <span className="text-[#C9A96E] text-[9px] tracking-[0.38em] uppercase font-inter font-light">Online Buchung</span>
           </div>
           <h2 className="font-cormorant text-5xl md:text-6xl font-semibold text-[#FDFCFA] leading-[1.0] tracking-[0.01em] mb-4">
             Tisch<br />
-            <em className="text-[#C5A17F]">reservieren</em>
+            <em className="text-[#C9A96E]">reservieren</em>
           </h2>
           <p className="text-[#FAF8F4]/30 font-inter font-light text-[13px] tracking-[0.04em] mb-14 flex items-center gap-2.5">
-            <Phone size={11} strokeWidth={1} className="text-[#C5A17F]/60" />
+            <Phone size={11} strokeWidth={1} className="text-[#C9A96E]/60" />
             Oder telefonisch:{' '}
-            <a href="tel:+4951112345" className="text-[#C5A17F]/70 hover:text-[#C5A17F] transition-colors duration-200">
+            <a href="tel:+4951112345" className="text-[#C9A96E]/70 hover:text-[#C9A96E] transition-colors duration-200">
               +49 511 12345
             </a>
           </p>
@@ -87,25 +127,18 @@ export default function ReservationSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
-              className="py-20 text-center border border-[#C5A17F]/15 bg-[#1C1914]"
+              className="py-20 text-center border border-[#C9A96E]/15 bg-[#110F0C]"
             >
-              <motion.div
-                initial={{ scale: 0.7, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
-                className="mb-8"
-              >
-                <CheckCircle2 size={44} strokeWidth={1} className="text-[#C5A17F] mx-auto" />
-              </motion.div>
-              <p className="text-[#C5A17F] text-[9px] tracking-[0.38em] uppercase font-inter font-light mb-4">Anfrage eingegangen</p>
+              <GoldCheckmark />
+              <p className="text-[#C9A96E] text-[9px] tracking-[0.38em] uppercase font-inter font-light mb-4">Anfrage eingegangen</p>
               <h3 className="font-cormorant text-3xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">Vielen Dank!</h3>
               <p className="text-[#FAF8F4]/35 font-inter font-light text-[13px] leading-[1.9] max-w-[280px] mx-auto mb-10">
                 Ihre Anfrage wurde an uns weitergeleitet.<br />Wir bestätigen innerhalb weniger Stunden per E-Mail.
               </p>
-              <div className="w-8 h-px bg-[#C5A17F]/30 mx-auto mb-8" />
+              <div className="w-8 h-px bg-[#C9A96E]/30 mx-auto mb-8" />
               <button
-                onClick={() => { setSubmitted(false); setForm(f => ({ ...f, name:'', email:'', phone:'', date:'', notes:'' })) }}
-                className="text-[#C5A17F]/50 font-inter text-[9px] tracking-[0.28em] uppercase hover:text-[#C5A17F] transition-colors duration-200"
+                onClick={() => { setSubmitted(false); reset() }}
+                className="text-[#C9A96E]/50 font-inter text-[9px] tracking-[0.28em] uppercase hover:text-[#C9A96E] transition-colors duration-200"
               >
                 Neue Anfrage stellen
               </button>
@@ -114,125 +147,130 @@ export default function ReservationSection() {
             /* ── Form ── */
             <motion.form
               key="form"
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="border border-[#FDFCFA]/6 bg-[#14120E]"
+              className="border border-[#FDFCFA]/6 bg-[#110F0C]"
             >
-              {/* Honeypot — hidden from real users, traps bots */}
+              {/* Honeypot — hidden from real users */}
               <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}>
-                <input
-                  type="text"
-                  name="_trap"
-                  value={form._trap}
-                  onChange={e => setForm({ ...form, _trap: e.target.value })}
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
+                <input type="text" {...register('_trap')} tabIndex={-1} autoComplete="off" />
               </div>
 
-              {/* Row 1 */}
+              {/* Row 1: Name + Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 border-b border-[#FDFCFA]/6">
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>Name *</label>
-                  <input required type="text" placeholder="Ihr vollständiger Name" autoComplete="name"
-                    value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-                    className={inputBase} />
+                  <input
+                    type="text"
+                    placeholder="Ihr vollständiger Name"
+                    autoComplete="name"
+                    className={inputBase}
+                    {...register('name', { required: 'Bitte geben Sie Ihren Namen an.' })}
+                  />
+                  {errors.name && <p className={errorClass}>{errors.name.message}</p>}
                 </div>
                 <div className="p-6">
                   <label className={labelClass}>E-Mail *</label>
-                  <input required type="email" placeholder="ihre@email.de" autoComplete="email"
-                    value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
-                    className={inputBase} />
+                  <input
+                    type="email"
+                    placeholder="ihre@email.de"
+                    autoComplete="email"
+                    className={inputBase}
+                    {...register('email', {
+                      required: 'Bitte geben Sie Ihre E-Mail-Adresse an.',
+                      pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Ungültige E-Mail-Adresse.' },
+                    })}
+                  />
+                  {errors.email && <p className={errorClass}>{errors.email.message}</p>}
                 </div>
               </div>
 
-              {/* Row 2 */}
+              {/* Row 2: Phone + Persons */}
               <div className="grid grid-cols-1 sm:grid-cols-2 border-b border-[#FDFCFA]/6">
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>
-                    <span className="flex items-center gap-1.5">
-                      <Phone size={8} strokeWidth={1} />Telefon
-                    </span>
+                    <span className="flex items-center gap-1.5"><Phone size={8} strokeWidth={1} />Telefon *</span>
                   </label>
-                  <input type="tel" placeholder="+49 511 …" autoComplete="tel"
-                    value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
-                    className={inputBase} />
+                  <input
+                    type="tel"
+                    placeholder="+49 511 …"
+                    autoComplete="tel"
+                    className={inputBase}
+                    {...register('phone', { required: 'Bitte geben Sie Ihre Telefonnummer an.' })}
+                  />
+                  {errors.phone && <p className={errorClass}>{errors.phone.message}</p>}
                 </div>
                 <div className="p-6">
                   <label className={labelClass}>
-                    <span className="flex items-center gap-1.5">
-                      <Users size={8} strokeWidth={1} />Personen *
-                    </span>
+                    <span className="flex items-center gap-1.5"><Users size={8} strokeWidth={1} />Personenanzahl *</span>
                   </label>
                   <div className="relative">
-                    <select required value={form.persons}
-                      onChange={e => setForm({ ...form, persons: e.target.value })}
-                      className={selectBase}>
-                      {Array.from({ length: 10 }, (_, i) => i + 1).map(n => (
-                        <option key={n} value={n} className="bg-[#14120E]">
+                    <select className={selectBase} {...register('persons', { required: true })}>
+                      {Array.from({ length: 8 }, (_, i) => i + 1).map(n => (
+                        <option key={n} value={n} className="bg-[#110F0C]">
                           {n} {n === 1 ? 'Person' : 'Personen'}
                         </option>
                       ))}
                     </select>
                     <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-[3px]">
-                      <div className="w-[6px] h-px bg-[#C5A17F]/50 rotate-[45deg] translate-x-[1px]" />
-                      <div className="w-[6px] h-px bg-[#C5A17F]/50 -rotate-[45deg] -translate-x-[1px]" />
+                      <div className="w-[6px] h-px bg-[#C9A96E]/50 rotate-[45deg] translate-x-[1px]" />
+                      <div className="w-[6px] h-px bg-[#C9A96E]/50 -rotate-[45deg] -translate-x-[1px]" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Row 3 */}
+              {/* Row 3: Date + Time */}
               <div className="grid grid-cols-1 sm:grid-cols-2 border-b border-[#FDFCFA]/6">
                 <div className="p-6 sm:border-r border-[#FDFCFA]/6">
                   <label className={labelClass}>
-                    <span className="flex items-center gap-1.5">
-                      <CalendarDays size={8} strokeWidth={1} />Datum *
-                    </span>
+                    <span className="flex items-center gap-1.5"><CalendarDays size={8} strokeWidth={1} />Datum *</span>
                   </label>
-                  <input required type="date"
-                    value={form.date} min={new Date().toISOString().split('T')[0]}
-                    onChange={e => setForm({ ...form, date: e.target.value })}
-                    className={inputBase} />
+                  <input
+                    type="date"
+                    min={new Date().toISOString().split('T')[0]}
+                    className={inputBase}
+                    {...register('date', { required: 'Bitte wählen Sie ein Datum.' })}
+                  />
+                  {errors.date && <p className={errorClass}>{errors.date.message}</p>}
                 </div>
                 <div className="p-6">
                   <label className={labelClass}>
-                    <span className="flex items-center gap-1.5">
-                      <Clock size={8} strokeWidth={1} />Uhrzeit *
-                    </span>
+                    <span className="flex items-center gap-1.5"><Clock size={8} strokeWidth={1} />Uhrzeit *</span>
                   </label>
                   <div className="relative">
-                    <select required value={form.time}
-                      onChange={e => setForm({ ...form, time: e.target.value })}
-                      className={selectBase}>
+                    <select className={selectBase} {...register('time', { required: true })}>
                       {timeSlots.map(t => (
-                        <option key={t} value={t} className="bg-[#14120E]">{t} Uhr</option>
+                        <option key={t} value={t} className="bg-[#110F0C]">{t} Uhr</option>
                       ))}
                     </select>
                     <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-[3px]">
-                      <div className="w-[6px] h-px bg-[#C5A17F]/50 rotate-[45deg] translate-x-[1px]" />
-                      <div className="w-[6px] h-px bg-[#C5A17F]/50 -rotate-[45deg] -translate-x-[1px]" />
+                      <div className="w-[6px] h-px bg-[#C9A96E]/50 rotate-[45deg] translate-x-[1px]" />
+                      <div className="w-[6px] h-px bg-[#C9A96E]/50 -rotate-[45deg] -translate-x-[1px]" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Row 4 */}
+              {/* Row 4: Special requests */}
               <div className="p-6 border-b border-[#FDFCFA]/6">
                 <label className={labelClass}>Besondere Wünsche</label>
-                <textarea rows={3} placeholder="Allergien, Anlass, Sitzwunsch…"
-                  value={form.notes} onChange={e => setForm({ ...form, notes: e.target.value })}
-                  className={`${inputBase} resize-none`} />
+                <textarea
+                  rows={3}
+                  placeholder="Allergien, Anlass, Sitzwunsch…"
+                  className={`${inputBase} resize-none`}
+                  {...register('notes')}
+                />
               </div>
 
-              {/* Error message */}
-              {error && (
+              {/* Server error */}
+              {serverError && (
                 <div className="px-6 pt-5">
                   <p className="text-red-400/80 font-inter text-[12px] font-light leading-[1.7] border-l-2 border-red-400/40 pl-3">
-                    {error}
+                    {serverError}
                   </p>
                 </div>
               )}
@@ -241,14 +279,14 @@ export default function ReservationSection() {
               <div className="p-6">
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="w-full bg-[#C5A17F] text-[#0A0805] py-4 font-inter font-semibold
+                  disabled={isSubmitting}
+                  className="w-full bg-[#C9A96E] text-[#0A0805] py-4 font-inter font-semibold
                     text-[10px] tracking-[0.32em] uppercase
-                    hover:bg-[#D4B38C] transition-all duration-300
-                    hover:-translate-y-[2px] hover:shadow-[0_12px_40px_rgba(197,161,127,0.22)]
+                    hover:bg-[#D4B88A] transition-all duration-300
+                    hover:-translate-y-[2px] hover:shadow-[0_12px_40px_rgba(201,169,110,0.22)]
                     disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 disabled:shadow-none"
                 >
-                  {loading ? (
+                  {isSubmitting ? (
                     <span className="flex items-center justify-center gap-2.5">
                       <motion.span
                         animate={{ rotate: 360 }}

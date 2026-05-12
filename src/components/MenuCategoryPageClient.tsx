@@ -55,7 +55,7 @@ export default function MenuCategoryPageClient({ category }: Props) {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/sitz.jpg.jpeg')" }}
         />
-        <div className="absolute inset-0 bg-[#FAF8F4]/94" />
+        <div className="absolute inset-0 bg-[#0C0A08]/92" />
 
         <div className="relative max-w-3xl mx-auto px-6 lg:px-10">
 
@@ -64,7 +64,7 @@ export default function MenuCategoryPageClient({ category }: Props) {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-[#6B6560] font-inter font-light text-[13px] leading-[2] tracking-[0.04em] mb-16 max-w-md"
+            className="text-[#D4C9B8]/55 font-inter font-light text-[13px] leading-[2] tracking-[0.04em] mb-16 max-w-md"
           >
             {category.description}
           </motion.p>
@@ -80,17 +80,17 @@ export default function MenuCategoryPageClient({ category }: Props) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.65, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] }}
                   onClick={() => setActiveItem(item)}
-                  className="group w-full text-left py-8 border-b border-[#D4C9B8]/35
-                    first:border-t first:border-[#D4C9B8]/35
+                  className="group w-full text-left py-8 border-b border-[#FDFCFA]/10
+                    first:border-t first:border-[#FDFCFA]/10
                     hover:border-[#C9A96E]/25 transition-colors duration-300
                     focus-visible:outline-1 focus-visible:outline-[#C9A96E]"
                 >
                   <div className="flex items-baseline justify-between gap-8">
                     {/* Name + badge */}
                     <div className="flex items-baseline gap-3 min-w-0">
-                      <h3 className="font-cormorant text-[1.65rem] md:text-[1.9rem] font-semibold text-[#1A1815]
+                      <h3 className="font-cormorant text-[1.65rem] md:text-[1.9rem] font-semibold text-[#FDFCFA]
                         tracking-[0.01em] leading-tight
-                        group-hover:text-[#2C2A26] transition-colors duration-200 shrink-0">
+                        group-hover:text-[#C9A96E] transition-colors duration-200 shrink-0">
                         {item.name}
                       </h3>
                       {item.badge && (
@@ -108,7 +108,7 @@ export default function MenuCategoryPageClient({ category }: Props) {
                   </div>
 
                   {/* Description */}
-                  <p className="text-[#6B6560] font-inter font-light text-[13px] leading-[1.85] mt-2.5 tracking-[0.01em]
+                  <p className="text-[#D4C9B8]/50 font-inter font-light text-[13px] leading-[1.85] mt-2.5 tracking-[0.01em]
                     max-w-[520px]">
                     {item.description}
                   </p>
@@ -124,7 +124,7 @@ export default function MenuCategoryPageClient({ category }: Props) {
           </div>
 
           {/* Legal footnote */}
-          <p className="text-[#6B6560]/40 font-inter text-[10px] tracking-[0.1em] uppercase mt-16 leading-relaxed">
+          <p className="text-[#D4C9B8]/25 font-inter text-[10px] tracking-[0.1em] uppercase mt-16 leading-relaxed">
             Alle Preise inkl. MwSt. · Allergene auf Anfrage · Saisonale Änderungen vorbehalten
           </p>
         </div>

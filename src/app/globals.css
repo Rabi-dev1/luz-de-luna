@@ -25,8 +25,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: #FAF8F4;
-  color: #14120E;
+  background-color: #0C0A08;
+  color: #FDFCFA;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

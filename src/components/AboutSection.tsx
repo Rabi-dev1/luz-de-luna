@@ -15,7 +15,6 @@ export default function AboutSection() {
   const inViewRef  = useRef(null)
   const inView     = useInView(inViewRef, { once: true, margin: '-100px' })
 
-  /* Subtle parallax on the image inside the section */
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
   const imageY = useTransform(scrollYProgress, [0, 1], ['-6%', '6%'])
 
@@ -29,16 +28,15 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      /* Overlaps with the dark section above */
-      className="relative z-10 pt-28 md:pt-36 pb-36 md:pb-52 bg-[#FAF8F4] -mt-12"
+      className="relative z-10 pt-28 md:pt-36 pb-36 md:pb-52 bg-[#0C0A08] -mt-12"
     >
-      {/* Soft shadow from above to sell the overlap */}
-      <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0A0805]/10 to-transparent pointer-events-none" />
+      {/* Subtle separator glow from above */}
+      <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#C9A96E]/4 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
-          {/* ── Image column ── bleeds into the section below */}
+          {/* ── Image column ── */}
           <motion.div
             ref={inViewRef}
             initial={{ opacity: 0, x: -48 }}
@@ -46,7 +44,6 @@ export default function AboutSection() {
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative lg:mb-[-100px]"
           >
-            {/* Image with own parallax scroll */}
             <div className="relative aspect-[4/5] overflow-hidden">
               <motion.div
                 className="absolute inset-0 bg-cover bg-center food-img"
@@ -56,21 +53,20 @@ export default function AboutSection() {
                   scale: 1.08,
                 }}
               />
-              {/* Warm inner vignette */}
               <div
                 className="absolute inset-0"
-                style={{ boxShadow: 'inset 0 0 80px rgba(10,8,5,0.15)' }}
+                style={{ boxShadow: 'inset 0 0 80px rgba(10,8,5,0.25)' }}
               />
             </div>
 
-            {/* "Seit 2018" floating badge — slightly outside the image for depth */}
+            {/* "Seit 2018" badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 12 }}
               animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{ delay: 0.55, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -bottom-5 -right-4 md:right-0 bg-[#1C1914] px-7 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.3)] z-10"
+              className="absolute -bottom-5 -right-4 md:right-0 bg-[#1C1914] border border-[#FDFCFA]/6 px-7 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-10"
             >
-              <p className="font-cormorant text-[#C5A17F] text-5xl md:text-6xl font-semibold leading-none tracking-tight">2018</p>
+              <p className="font-cormorant text-[#C9A96E] text-5xl md:text-6xl font-semibold leading-none tracking-tight">2018</p>
               <p className="text-[#FAF8F4]/30 font-inter text-[9px] tracking-[0.28em] uppercase font-light mt-2">In Hannover</p>
             </motion.div>
 
@@ -79,7 +75,7 @@ export default function AboutSection() {
               initial={{ scaleY: 0 }}
               animate={inView ? { scaleY: 1 } : {}}
               transition={{ delay: 0.3, duration: 0.9 }}
-              className="absolute -left-5 top-1/4 w-px h-32 bg-gradient-to-b from-transparent via-[#C5A17F]/35 to-transparent origin-top hidden lg:block"
+              className="absolute -left-5 top-1/4 w-px h-32 bg-gradient-to-b from-transparent via-[#C9A96E]/35 to-transparent origin-top hidden lg:block"
             />
           </motion.div>
 
@@ -91,34 +87,34 @@ export default function AboutSection() {
             className="lg:col-span-7 lg:pt-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-px bg-[#C5A17F]/55" />
-              <span className="text-[#C5A17F] text-[9px] tracking-[0.38em] uppercase font-inter font-light">
+              <div className="w-8 h-px bg-[#C9A96E]/55" />
+              <span className="text-[#C9A96E] text-[9px] tracking-[0.38em] uppercase font-inter font-light">
                 Unsere Geschichte
               </span>
             </div>
 
-            <h2 className="font-cormorant text-5xl md:text-6xl lg:text-[4.5rem] font-semibold text-[#14120E] leading-[1.0] mb-6 tracking-[0.01em]">
+            <h2 className="font-cormorant text-5xl md:text-6xl lg:text-[4.5rem] font-semibold text-[#FDFCFA] leading-[1.0] mb-6 tracking-[0.01em]">
               Mehr als ein<br />
-              <em className="text-[#2C2A26]">Restaurant</em>
+              <em className="text-[#D4C9B8]">Restaurant</em>
             </h2>
 
-            <div className="w-10 h-px bg-[#C5A17F] mb-10" />
+            <div className="w-10 h-px bg-[#C9A96E] mb-10" />
 
-            <p className="text-[#6B6560] font-inter font-light text-[15px] leading-[2.05] mb-6 tracking-[0.01em]">
-              <strong className="font-medium text-[#14120E]">Luz de Luna</strong> — Mondlicht.
+            <p className="text-[#D4C9B8]/60 font-inter font-light text-[15px] leading-[2.05] mb-6 tracking-[0.01em]">
+              <strong className="font-medium text-[#FDFCFA]">Luz de Luna</strong> — Mondlicht.
               So wie der Mond sein ruhiges, warmes Licht über Hannover wirft,
               so wollen wir sein: eine stille Oase des Genusses mitten im Alltag.
               Gegründet 2018 in Hannover-Linden, aus der Überzeugung heraus,
               dass gutes Essen Momente schafft, die bleiben.
             </p>
-            <p className="text-[#6B6560] font-inter font-light text-[15px] leading-[2.05] mb-14 tracking-[0.01em]">
+            <p className="text-[#D4C9B8]/60 font-inter font-light text-[15px] leading-[2.05] mb-14 tracking-[0.01em]">
               Unsere Küche lebt von der Vielfalt Niedersachsens —
               frisches Gemüse vom Wochenmarkt, Fleisch von regionalen Höfen,
               Fisch aus nachhaltigem Fang. Saisonal, ehrlich, präzise.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 md:gap-10 pt-10 border-t border-[#D4C9B8]/50">
+            <div className="grid grid-cols-3 gap-6 md:gap-10 pt-10 border-t border-[#FDFCFA]/8">
               {stats.map(([val, label], i) => (
                 <motion.div
                   key={val}
@@ -127,10 +123,10 @@ export default function AboutSection() {
                   initial="hidden"
                   animate={inView ? 'show' : 'hidden'}
                 >
-                  <p className="font-cormorant text-[2.2rem] md:text-[2.6rem] font-semibold text-[#C5A17F] tracking-tight leading-none">
+                  <p className="font-cormorant text-[2.2rem] md:text-[2.6rem] font-semibold text-[#C9A96E] tracking-tight leading-none">
                     {val}
                   </p>
-                  <p className="text-[#6B6560] font-inter font-light text-[11px] leading-[1.6] mt-2.5 whitespace-pre-line tracking-[0.08em] uppercase">
+                  <p className="text-[#D4C9B8]/45 font-inter font-light text-[11px] leading-[1.6] mt-2.5 whitespace-pre-line tracking-[0.08em] uppercase">
                     {label}
                   </p>
                 </motion.div>
