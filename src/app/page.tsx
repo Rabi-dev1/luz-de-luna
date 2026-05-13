@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection'
 import MenuCategoriesSection from '@/components/MenuCategoriesSection'
 import MoodSection from '@/components/MoodSection'
 import AboutSection from '@/components/AboutSection'
+import MoonPhasesSection from '@/components/MoonPhasesSection'
 import GallerySection from '@/components/GallerySection'
 import FindUsSection from '@/components/FindUsSection'
 import ReservationSection from '@/components/ReservationSection'
@@ -30,6 +31,7 @@ export default function HomePage() {
       <MenuCategoriesSection />
       <MoodSection />
       <AboutSection />
+      <MoonPhasesSection />
       <GallerySection />
       <FindUsSection />
       <ReservationSection />
