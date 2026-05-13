@@ -61,21 +61,20 @@ export default async function MenuCategoryPage({ params }: PageProps) {
     name: cat.label,
     description: cat.description,
     inLanguage: 'de',
-    hasMenuSection: {
+    hasMenuSection: (cat.subsections ?? [{ id: cat.id, label: cat.label, items: cat.items }]).map(sub => ({
       '@type': 'MenuSection',
-      name: cat.label,
-      description: cat.description,
-      hasMenuItem: cat.items.map(item => ({
+      name: sub.label,
+      hasMenuItem: sub.items.map(item => ({
         '@type': 'MenuItem',
         name: item.name,
         description: item.description,
         offers: {
           '@type': 'Offer',
-          price: item.price.replace('€', '').replace(',', '.').trim(),
+          price: item.price.replace(/[€+]/g, '').replace(',', '.').trim().split(' ')[0],
           priceCurrency: 'EUR',
         },
       })),
-    },
+    })),
   }
 
   return (

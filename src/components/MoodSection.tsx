@@ -12,7 +12,7 @@ export default function MoodSection() {
       <motion.div
         className="absolute inset-0 scale-[1.18] bg-cover bg-center"
         style={{
-          backgroundImage: "url('/images/ladenlokal.jpg.jpeg')",
+          backgroundImage: "url('/images/ladenlokal.jpg')",
           y: bgY,
           willChange: 'transform',
         }}

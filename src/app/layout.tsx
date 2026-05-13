@@ -124,7 +124,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
-        <link rel="preload" as="image" href="/images/herobild.jpg.jpeg" />
+        <link rel="preload" as="image" href="/images/herobild.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

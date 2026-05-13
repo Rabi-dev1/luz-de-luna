@@ -62,7 +62,7 @@ export default function MenuItemModal({ item, onClose }: ModalProps) {
                 {/* Subtle sitz.jpg texture behind header */}
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-[0.08]"
-                  style={{ backgroundImage: "url('/images/sitz.jpg.jpeg')" }}
+                  style={{ backgroundImage: "url('/images/sitz.jpg')" }}
                 />
                 <div className="absolute inset-0 bg-[#1A1815]/80" />
 

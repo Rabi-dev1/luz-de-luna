@@ -69,7 +69,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/herobild.jpg.jpeg')",
+            backgroundImage: "url('/images/herobild.jpg')",
             filter: 'brightness(0.72) contrast(1.05) saturate(0.85)',
           }}
         />

@@ -54,7 +54,7 @@ export default function Navigation() {
     : 'bg-transparent'
 
   const links = [
-    { label: 'Speisekarte', href: isHome ? '/#menu'        : '/menu/fruehstueck' },
+    { label: 'Speisekarte', href: isHome ? '/#menu'        : '/menu/fruehstueck'  },
     { label: 'Über uns',    href: isHome ? '/#about'       : '/#about' },
     { label: 'Kontakt',     href: isHome ? '/#findus'      : '/#findus' },
     { label: 'Reservieren', href: isHome ? '/#reservation' : '/#reservation', cta: true },

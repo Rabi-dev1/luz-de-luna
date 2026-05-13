@@ -9,117 +9,119 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">{title}</h2>
+      <div className="text-[#D4C9B8]/65 font-inter font-light text-[14px] leading-[1.95]">{children}</div>
+    </section>
+  )
+}
+
 export default function DatenschutzPage() {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#0C0A08] pt-32 pb-24">
+      <main className="min-h-screen bg-stone-950 pt-32 pb-24">
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
 
-          {/* Header */}
           <div className="mb-14">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-px bg-[#C9A96E]/50" />
               <span className="text-[#C9A96E] text-[9px] tracking-[0.38em] uppercase font-inter font-light">Rechtliches</span>
             </div>
             <h1 className="font-cormorant text-5xl md:text-6xl font-semibold text-[#FDFCFA] leading-[1.0] tracking-[0.01em]">
-              Datenschutz
+              Datenschutz&shy;erklärung
             </h1>
             <div className="w-10 h-px bg-[#C9A96E] mt-6" />
           </div>
 
-          <div className="space-y-10 text-[#D4C9B8]/65 font-inter font-light text-[14px] leading-[1.95]">
+          <div className="space-y-10">
 
-            <section>
-              <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">
-                1. Datenschutz auf einen Blick
-              </h2>
-              <p className="mb-4">
-                <strong className="text-[#FDFCFA]/80 font-medium">Allgemeine Hinweise:</strong> Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
-              </p>
+            <Section title="1. Verantwortliche Stelle">
               <p>
-                <strong className="text-[#FDFCFA]/80 font-medium">Datenerfassung auf dieser Website:</strong> Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem{' '}
-                <Link href="/impressum" className="text-[#C9A96E]/80 hover:text-[#C9A96E] transition-colors duration-200">
-                  Impressum
-                </Link>{' '}
-                dieser Website entnehmen.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">
-                2. Verantwortliche Stelle
-              </h2>
-              <p>
-                Luz de Luna Restaurant &amp; Café<br />
+                <strong className="text-[#FDFCFA]/85 font-medium">Luz de Luna Restaurant &amp; Café</strong><br />
+                Inhaber: Azer Badal Dashto<br />
                 Falkenstraße 22A, 30449 Hannover<br />
                 E-Mail:{' '}
                 <a href="mailto:info@luz-de-luna.de" className="text-[#C9A96E]/80 hover:text-[#C9A96E] transition-colors duration-200">
                   info@luz-de-luna.de
                 </a>
               </p>
-            </section>
+            </Section>
 
-            <section>
-              <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">
-                3. Cookies
-              </h2>
-              <p>
-                Diese Website verwendet ausschließlich technisch notwendige Cookies. Diese dienen dazu, Ihre Cookie-Einstellungen zu speichern. Es werden keine Tracking- oder Marketing-Cookies eingesetzt. Eine Einwilligung ist für technisch notwendige Cookies nach § 25 Abs. 2 TTDSG nicht erforderlich.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">
-                4. Kontaktformular / Reservierungsanfragen
-              </h2>
+            <Section title="2. Datenschutz auf einen Blick">
               <p className="mb-4">
-                Wenn Sie uns per Reservierungsformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.
+                <strong className="text-[#FDFCFA]/80 font-medium">Allgemeines:</strong> Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
               </p>
               <p>
-                Die von Ihnen im Formular eingegebenen Daten (Name, E-Mail, Telefon, Datum, Personenanzahl, Sonderwünsche) werden ausschließlich zur Bearbeitung Ihrer Reservierungsanfrage verwendet und nicht an Dritte weitergegeben. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).
+                <strong className="text-[#FDFCFA]/80 font-medium">Datenerhebung:</strong> Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber (Azer Badal Dashto). Die Kontaktdaten finden Sie im{' '}
+                <Link href="/impressum" className="text-[#C9A96E]/80 hover:text-[#C9A96E] transition-colors duration-200">Impressum</Link>.
               </p>
-            </section>
+            </Section>
 
-            <section>
-              <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">
-                5. Server-Logfiles
-              </h2>
+            <Section title="3. Cookies">
               <p>
-                Der Provider der Seiten erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.
+                Diese Website verwendet ausschließlich technisch notwendige Cookies (localStorage) zur Speicherung Ihrer Cookie-Einstellungen. Es werden keine Tracking-, Analyse- oder Marketing-Cookies eingesetzt. Eine Einwilligung ist für technisch notwendige Cookies nach § 25 Abs. 2 Nr. 2 TTDSG nicht erforderlich. Weitere Informationen finden Sie in unserer{' '}
+                <Link href="/cookies" className="text-[#C9A96E]/80 hover:text-[#C9A96E] transition-colors duration-200">Cookie-Richtlinie</Link>.
               </p>
-            </section>
+            </Section>
 
-            <section>
-              <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">
-                6. Google Maps
-              </h2>
-              <p>
-                Diese Seite nutzt den Kartendienst Google Maps. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Zur Nutzung der Funktionen von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern. Diese Informationen werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-cormorant text-2xl font-semibold text-[#FDFCFA] mb-3 tracking-[0.01em]">
-                7. Ihre Rechte
-              </h2>
+            <Section title="4. Kontaktformular / Reservierungsanfragen">
               <p className="mb-4">
-                Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten.
+                Wenn Sie uns per Reservierungsformular kontaktieren, werden Ihre Angaben (Name, E-Mail, Telefon, Datum, Personenanzahl, Sonderwünsche) zur Bearbeitung der Anfrage verarbeitet und per E-Mail an den Betreiber übermittelt. Diese Daten werden nicht an Dritte weitergegeben.
               </p>
               <p>
-                Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im{' '}
-                <Link href="/impressum" className="text-[#C9A96E]/80 hover:text-[#C9A96E] transition-colors duration-200">
-                  Impressum
-                </Link>{' '}
-                angegebenen Adresse an uns wenden. Außerdem steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.
+                <strong className="text-[#FDFCFA]/80 font-medium">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung / vorvertragliche Maßnahmen).<br />
+                <strong className="text-[#FDFCFA]/80 font-medium">Speicherdauer:</strong> Die Daten werden gelöscht, sobald die Reservierung abgewickelt wurde und keine gesetzlichen Aufbewahrungspflichten mehr bestehen.
               </p>
-            </section>
+            </Section>
 
-            <section>
-              <p className="text-[#D4C9B8]/35 text-[12px]">
-                Stand: Mai 2026
+            <Section title="5. Server-Logfiles">
+              <p>
+                Der Hosting-Anbieter erhebt automatisch Server-Logfiles (IP-Adresse, Browsertyp, Betriebssystem, Referrer, Uhrzeit). Diese Daten werden nicht mit anderen Quellen zusammengeführt. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Stabilität und Sicherheit).
               </p>
-            </section>
+            </Section>
+
+            <Section title="6. Google Maps">
+              <p>
+                Diese Seite nutzt Google Maps (Google Ireland Limited, Gordon House, Dublin 4). Bei Nutzung wird Ihre IP-Adresse an Google übermittelt und ggf. in die USA übertragen. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Sie können die Übertragung verhindern, indem Sie JavaScript in Ihrem Browser deaktivieren.
+              </p>
+            </Section>
+
+            <Section title="7. Hosting (Vercel)">
+              <p>
+                Diese Website wird bei Vercel Inc., 340 Pine Street, Suite 900, San Francisco, CA 94104, USA, gehostet. Vercel verarbeitet Server-Logfiles gemäß seiner{' '}
+                <span className="text-[#C9A96E]/70">Datenschutzrichtlinie</span>. Es besteht ein Auftragsverarbeitungsvertrag (DPA) mit Vercel.
+              </p>
+            </Section>
+
+            <Section title="8. Ihre Rechte (DSGVO Art. 15–22)">
+              <ul className="space-y-1 list-none">
+                {[
+                  'Recht auf Auskunft (Art. 15)',
+                  'Recht auf Berichtigung (Art. 16)',
+                  'Recht auf Löschung (Art. 17)',
+                  'Recht auf Einschränkung der Verarbeitung (Art. 18)',
+                  'Recht auf Datenübertragbarkeit (Art. 20)',
+                  'Widerspruchsrecht (Art. 21)',
+                  'Beschwerderecht bei der Aufsichtsbehörde (LfD Niedersachsen)',
+                ].map(r => (
+                  <li key={r} className="flex items-start gap-2">
+                    <span className="text-[#C9A96E]/50 mt-1">—</span>
+                    <span>{r}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4">
+                Zur Ausübung Ihrer Rechte wenden Sie sich an:{' '}
+                <a href="mailto:info@luz-de-luna.de" className="text-[#C9A96E]/80 hover:text-[#C9A96E] transition-colors duration-200">
+                  info@luz-de-luna.de
+                </a>
+              </p>
+            </Section>
+
+            <p className="text-[#D4C9B8]/30 text-[12px]">Stand: Mai 2026</p>
           </div>
 
           <div className="mt-14 pt-10 border-t border-[#FDFCFA]/8">
