@@ -13,7 +13,6 @@ const images = [
   { src: '/images/gallery7.jpg',  alt: 'Avocado-Mozzarella Toast – Luz de Luna',      ratio: '3/4',  mRatio: '1/1',  pos: '50% 50%' },
   { src: '/images/gallery8.jpg',  alt: 'Frühstück: Bagel mit frischen Beilagen',      ratio: '3/4',  mRatio: '1/1',  pos: '50% 35%' },
   { src: '/images/gallery9.jpg',  alt: 'Salmon Bowl mit Edamame',                     ratio: '3/4',  mRatio: '1/1',  pos: 'center'  },
-  { src: '/images/gallery10.jpg', alt: 'Blue Moon Latte – Signature Drink',           ratio: '3/4',  mRatio: '1/1',  pos: '50% 40%' },
 ]
 
 function GalleryItem({ img, i, inView }: { img: typeof images[0]; i: number; inView: boolean }) {

@@ -35,7 +35,7 @@ export const menuCategories: MenuCategory[] = [
     slug: 'fruehstueck',
     label: 'Frühstück & Brunch',
     shortLabel: 'Frühstück',
-    eyebrow: 'Ab 08:00 Uhr',
+    eyebrow: 'Ab 10:00 Uhr',
     description: 'Starten Sie entspannt in den Tag — mit frisch gebackenem Brot, sorgfältig ausgewählten Zutaten und dem Duft von Kaffee.',
     imageUrl: '/images/fruehstueck.jpg',
     items: [
@@ -262,7 +262,7 @@ export const menuCategories: MenuCategory[] = [
     slug: 'mittag-abend',
     label: 'Mittag & Abend',
     shortLabel: 'Mittag & Abend',
-    eyebrow: 'Ab 11:30 Uhr',
+    eyebrow: 'Ab 12:00 Uhr',
     description: 'Herzhafte Gerichte aus aller Welt — von der saftigen Bowl bis zum handgemachten Kibbeh.',
     imageUrl: '/images/mittag.jpg',
     items: [
