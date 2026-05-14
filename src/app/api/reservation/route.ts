@@ -14,7 +14,9 @@ export async function POST(req: NextRequest) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.web.de',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
@@ -124,7 +126,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `"Luz de Luna Website" <${process.env.SMTP_USER}>`,
-      to: 'rabimshko@gmail.com',
+      to: 'luzdeluna@web.de',
       replyTo: email,
       subject: `Reservierung: ${name} — ${formatDate(date)} · ${time} Uhr · ${persons} Pers.`,
       html,
