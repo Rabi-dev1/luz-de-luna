@@ -3,15 +3,15 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const images = [
-  { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80', alt: 'Restaurant Atmosphäre Hannover', ratio: '4/3' },
-  { src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80', alt: 'Bar & Cocktails',                ratio: '3/4' },
-  { src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80', alt: 'Hausgemachte Speisen',       ratio: '1/1' },
-  { src: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&q=80', alt: 'Abendkarte Gericht',         ratio: '4/3' },
-  { src: 'https://images.unsplash.com/photo-1484659619207-9165d119dafe?w=800&q=80', alt: 'Tischdekoration Abend',      ratio: '3/4' },
-  { src: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80', alt: 'Frische Zutaten',            ratio: '1/1' },
-  { src: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800&q=80', alt: 'Feine Küche Detail',           ratio: '4/3' },
-  { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80', alt: 'Kulinarische Highlights',    ratio: '3/4' },
-  { src: 'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=800&q=80', alt: 'Frühstück & Brunch',           ratio: '1/1' },
+  { src: '/images/gallery1.jpg', alt: 'Hausgemachtes Sandwich – Luz de Luna',          ratio: '3/4' },
+  { src: '/images/gallery2.jpg', alt: 'Tischdeko mit Mondprojektion',                  ratio: '4/3' },
+  { src: '/images/gallery3.jpg', alt: 'Luz de Luna – Café & Bar, Hannover-Linden',     ratio: '3/4' },
+  { src: '/images/gallery4.jpg', alt: 'Mondmural im Restaurant-Innenraum',             ratio: '4/3' },
+  { src: '/images/gallery5.jpg', alt: 'Bar-Detail: Brooklyn Gin',                      ratio: '3/4' },
+  { src: '/images/gallery6.jpg', alt: 'Bruschetta unterm Mondlicht',                   ratio: '4/3' },
+  { src: '/images/gallery7.jpg', alt: 'Restaurantraum mit großem Mondgemälde',         ratio: '3/4' },
+  { src: '/images/gallery8.jpg', alt: 'Hausgemachte Biscoff-Cheesecake',               ratio: '4/3' },
+  { src: '/images/gallery9.jpg', alt: 'Neonschild Luz de Luna mit Pflanzenwand',       ratio: '3/4' },
 ]
 
 export default function GallerySection() {

@@ -48,7 +48,7 @@ export default function AboutSection() {
               <motion.div
                 className="absolute inset-0 bg-cover bg-center food-img"
                 style={{
-                  backgroundImage: "url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=85')",
+                  backgroundImage: "url('/images/uberuns.jpg')",
                   y: imageY,
                   scale: 1.08,
                 }}
@@ -100,17 +100,11 @@ export default function AboutSection() {
 
             <div className="w-10 h-px bg-[#C9A96E] mb-10" />
 
-            <p className="text-[#D4C9B8]/60 font-inter font-light text-[15px] leading-[2.05] mb-6 tracking-[0.01em]">
-              <strong className="font-medium text-[#FDFCFA]">Luz de Luna</strong> — Mondlicht.
-              So wie der Mond sein ruhiges, warmes Licht über Hannover wirft,
-              so wollen wir sein: eine stille Oase des Genusses mitten im Alltag.
-              Gegründet 2018 in Hannover-Linden, aus der Überzeugung heraus,
-              dass gutes Essen Momente schafft, die bleiben.
-            </p>
             <p className="text-[#D4C9B8]/60 font-inter font-light text-[15px] leading-[2.05] mb-14 tracking-[0.01em]">
-              Unsere Küche lebt von der Vielfalt Niedersachsens —
-              frisches Gemüse vom Wochenmarkt, Fleisch von regionalen Höfen,
-              Fisch aus nachhaltigem Fang. Saisonal, ehrlich, präzise.
+              Leidenschaft, Zusammenhalt und ein herzliches Willkommen:
+              Das ist unsere Geschichte. Als Familienbetrieb legen wir Wert auf
+              echten, freundlichen Umgang und eine entspannte Stimmung.
+              Tritt ein und fühl dich wie bei Freunden.
             </p>
 
             {/* Stats */}
