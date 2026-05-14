@@ -37,7 +37,7 @@ export const menuCategories: MenuCategory[] = [
     shortLabel: 'Frühstück',
     eyebrow: 'Ab 08:00 Uhr',
     description: 'Starten Sie entspannt in den Tag — mit frisch gebackenem Brot, sorgfältig ausgewählten Zutaten und dem Duft von Kaffee.',
-    imageUrl: '/images/omelett.jpg',
+    imageUrl: '/images/fruehstueck.jpg',
     items: [
       {
         id: 'klassisches-fruehstueck',
@@ -264,7 +264,7 @@ export const menuCategories: MenuCategory[] = [
     shortLabel: 'Mittag & Abend',
     eyebrow: 'Ab 11:30 Uhr',
     description: 'Herzhafte Gerichte aus aller Welt — von der saftigen Bowl bis zum handgemachten Kibbeh.',
-    imageUrl: '/images/pasta.jpg',
+    imageUrl: '/images/mittag.jpg',
     items: [
       {
         id: 'currywurst-klassiker',

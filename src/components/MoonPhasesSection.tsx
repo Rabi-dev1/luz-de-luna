@@ -128,7 +128,8 @@ export default function MoonPhasesSection() {
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="w-10 h-px bg-[#C9A96E]/35" />
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-[#C9A96E]/70">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="12" cy="12" r="9" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1" />
+              <circle cx="12" cy="12" r="5" fill="currentColor" fillOpacity="0.10" />
             </svg>
             <div className="w-10 h-px bg-[#C9A96E]/35" />
           </div>

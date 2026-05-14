@@ -20,7 +20,7 @@ export default function AboutSection() {
 
   const stats = [
     ['80%',    'Regionale\nZutaten'],
-    ['4.8 ★',  'Google\nBewertung'],
+    ['4.9 ★',  'Google\nBewertung'],
     ['Täglich', 'Frisch\ngekocht'],
   ]
 
@@ -51,6 +51,7 @@ export default function AboutSection() {
                   backgroundImage: "url('/images/uberuns.jpg')",
                   y: imageY,
                   scale: 1.08,
+                  backgroundPosition: 'center 30%',
                 }}
               />
               <div
@@ -66,7 +67,7 @@ export default function AboutSection() {
               transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="absolute -bottom-5 -right-4 md:right-0 bg-[#1C1914] border border-[#FDFCFA]/6 px-7 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-10"
             >
-              <p className="font-cormorant text-[#C9A96E] text-5xl md:text-6xl font-semibold leading-none tracking-tight">2018</p>
+              <p className="font-cormorant text-[#C9A96E] text-5xl md:text-6xl font-semibold leading-none tracking-tight">2025</p>
               <p className="text-[#FAF8F4]/30 font-inter text-[9px] tracking-[0.28em] uppercase font-light mt-2">In Hannover</p>
             </motion.div>
 

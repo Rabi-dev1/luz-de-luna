@@ -4,10 +4,10 @@ import { motion, useInView } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
 const hours = [
-  { day: 'Montag – Freitag', time: '08:00 – 22:00' },
-  { day: 'Samstag',          time: '09:00 – 23:00' },
-  { day: 'Sonntag',          time: '09:00 – 23:00' },
-  { day: 'Feiertage',        time: '10:00 – 21:00' },
+  { day: 'Montag',           time: 'Ruhetag'        },
+  { day: 'Dienstag – Freitag', time: '10:00 – 22:00' },
+  { day: 'Samstag',          time: '10:00 – 00:00'  },
+  { day: 'Sonntag',          time: '10:00 – 21:00'  },
 ]
 
 const MAP_URL =
@@ -145,7 +145,7 @@ export default function FindUsSection() {
                     className="flex justify-between items-center py-3.5 border-b border-white/[0.05] last:border-0"
                   >
                     <span className="text-[#FAF8F4]/40 font-inter text-[13px] font-light tracking-[0.03em]">{h.day}</span>
-                    <span className="text-[#C5A17F] font-inter text-[13px] font-light tracking-[0.06em]">{h.time}</span>
+                    <span className={`font-inter text-[13px] font-light tracking-[0.06em] ${h.time === 'Ruhetag' ? 'text-[#FAF8F4]/25 italic' : 'text-[#C5A17F]'}`}>{h.time}</span>
                   </motion.div>
                 ))}
               </div>

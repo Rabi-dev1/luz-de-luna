@@ -4,15 +4,16 @@ import { motion, useInView } from 'framer-motion'
 
 /* pos: CSS background-position to keep subject centred in its crop */
 const images = [
-  { src: '/images/gallery1.jpg', alt: 'Hausgemachtes Sandwich – Luz de Luna', ratio: '3/4',  mRatio: '1/1',  pos: '50% 40%' },
-  { src: '/images/gallery2.jpg', alt: 'Tischdeko mit Mondprojektion',         ratio: '4/3',  mRatio: '1/1',  pos: 'center'  },
-  { src: '/images/gallery3.jpg', alt: 'Luz de Luna – Café & Bar, Hannover',   ratio: '3/4',  mRatio: '1/1',  pos: 'center'  },
-  { src: '/images/gallery4.jpg', alt: 'Mondmural im Restaurant-Innenraum',    ratio: '4/3',  mRatio: '1/1',  pos: '50% 30%' },
-  { src: '/images/gallery5.jpg', alt: 'Bar-Detail: Brooklyn Gin',             ratio: '3/4',  mRatio: '1/1',  pos: 'center'  },
-  { src: '/images/gallery6.jpg', alt: 'Bruschetta unterm Mondlicht',          ratio: '3/4',  mRatio: '1/1',  pos: '50% 25%' },
-  { src: '/images/gallery7.jpg', alt: 'Restaurantraum mit Mondgemälde',       ratio: '3/4',  mRatio: '1/1',  pos: '50% 20%' },
-  { src: '/images/gallery8.jpg', alt: 'Hausgemachte Biscoff-Cheesecake',      ratio: '4/3',  mRatio: '1/1',  pos: 'center'  },
-  { src: '/images/gallery9.jpg', alt: 'Neonschild Luz de Luna',               ratio: '3/4',  mRatio: '1/1',  pos: '50% 30%' },
+  { src: '/images/gallery1.jpg',  alt: 'Luz de Luna – Bogeneingang mit Neonschild',   ratio: '3/4',  mRatio: '1/1',  pos: '50% 30%' },
+  { src: '/images/gallery2.jpg',  alt: 'Barista gießt Latte Art',                     ratio: '3/4',  mRatio: '1/1',  pos: '50% 35%' },
+  { src: '/images/gallery3.jpg',  alt: 'Salmon Poke Bowl – Draufsicht',               ratio: '3/4',  mRatio: '1/1',  pos: 'center'  },
+  { src: '/images/gallery4.jpg',  alt: 'Kreisförmiges Luz de Luna Neonschild',        ratio: '1/1',  mRatio: '1/1',  pos: 'center'  },
+  { src: '/images/gallery5.jpg',  alt: 'Gözleme unterm Mondmural',                    ratio: '3/4',  mRatio: '1/1',  pos: '50% 25%' },
+  { src: '/images/gallery6.jpg',  alt: 'Neonschild Luz de Luna mit Pflanzenwand',     ratio: '3/4',  mRatio: '1/1',  pos: '50% 30%' },
+  { src: '/images/gallery7.jpg',  alt: 'Avocado-Mozzarella Toast – Luz de Luna',      ratio: '3/4',  mRatio: '1/1',  pos: '50% 50%' },
+  { src: '/images/gallery8.jpg',  alt: 'Frühstück: Bagel mit frischen Beilagen',      ratio: '3/4',  mRatio: '1/1',  pos: '50% 35%' },
+  { src: '/images/gallery9.jpg',  alt: 'Salmon Bowl mit Edamame',                     ratio: '3/4',  mRatio: '1/1',  pos: 'center'  },
+  { src: '/images/gallery10.jpg', alt: 'Blue Moon Latte – Signature Drink',           ratio: '3/4',  mRatio: '1/1',  pos: '50% 40%' },
 ]
 
 function GalleryItem({ img, i, inView }: { img: typeof images[0]; i: number; inView: boolean }) {
