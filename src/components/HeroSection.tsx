@@ -13,34 +13,43 @@ const item = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
 }
 
-/* Crescent moon SVG — ambient watermark in top-right */
-function CrescentMoon() {
+/* Full moon SVG — glowing orb in top-right of hero */
+function FullMoonHero() {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.92 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="absolute top-10 right-10 md:top-16 md:right-16 z-10 pointer-events-none"
+      initial={{ opacity: 0, scale: 0.88, y: 10 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      className="absolute top-6 right-4 md:top-12 md:right-12 z-10 pointer-events-none"
       aria-hidden="true"
     >
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" className="opacity-[0.12]">
-        <motion.path
-          d="M72 14 C94 22 108 42 108 64 C108 88 90 108 66 112 C44 116 22 102 14 80 C26 88 40 88 52 80 C68 70 76 50 72 32 C70 24 70 18 72 14Z"
-          fill="#C9A96E"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.4, delay: 0.8 }}
-        />
-        {/* Moon glow ring */}
-        <motion.circle
-          cx="66" cy="64" r="44"
-          stroke="#C9A96E"
-          strokeWidth="0.5"
-          fill="none"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.18 }}
-          transition={{ duration: 1.8, delay: 1.0, ease: 'easeOut' }}
-        />
+      <svg width="140" height="140" viewBox="0 0 140 140" fill="none">
+        {/* Outer glow rings */}
+        <circle cx="70" cy="70" r="68"  stroke="#C9A96E" strokeWidth="0.3" opacity="0.05" />
+        <circle cx="70" cy="70" r="60"  stroke="#C9A96E" strokeWidth="0.4" opacity="0.08" />
+        <circle cx="70" cy="70" r="52"  stroke="#C9A96E" strokeWidth="0.4" opacity="0.11" />
+        <circle cx="70" cy="70" r="44"  stroke="#C9A96E" strokeWidth="0.5" opacity="0.15" />
+
+        {/* Radial glow */}
+        <radialGradient id="heroMoonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stopColor="#C9A96E" stopOpacity="0.22" />
+          <stop offset="55%"  stopColor="#C9A96E" stopOpacity="0.09" />
+          <stop offset="100%" stopColor="#C9A96E" stopOpacity="0"    />
+        </radialGradient>
+        <circle cx="70" cy="70" r="44" fill="url(#heroMoonGlow)" />
+
+        {/* Moon disc */}
+        <circle cx="70" cy="70" r="36" fill="rgba(201,169,110,0.11)" />
+        <circle cx="70" cy="70" r="36" stroke="#C9A96E" strokeWidth="0.7" opacity="0.35" />
+
+        {/* Subtle crater details */}
+        <circle cx="62"  cy="63" r="5"  stroke="#C9A96E" strokeWidth="0.3" opacity="0.12" />
+        <circle cx="80"  cy="75" r="4"  stroke="#C9A96E" strokeWidth="0.3" opacity="0.10" />
+        <circle cx="68"  cy="82" r="3"  stroke="#C9A96E" strokeWidth="0.3" opacity="0.09" />
+        <circle cx="76"  cy="58" r="2.5" stroke="#C9A96E" strokeWidth="0.3" opacity="0.08" />
+
+        {/* Inner highlight */}
+        <circle cx="62" cy="62" r="36" fill="rgba(253,252,250,0.025)" />
       </svg>
     </motion.div>
   )
@@ -93,8 +102,8 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      {/* ── Crescent moon watermark ── */}
-      <CrescentMoon />
+      {/* ── Full moon watermark ── */}
+      <FullMoonHero />
 
       {/* ── Gold hairline ── */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#C9A96E]/35 to-transparent z-20" />
@@ -128,7 +137,8 @@ export default function HeroSection() {
           {/* Moonlight tagline */}
           <motion.div variants={item} className="flex items-center gap-3 mb-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-[#C9A96E]/70" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="12" cy="12" r="9" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1" />
+              <circle cx="12" cy="12" r="5" fill="currentColor" fillOpacity="0.10" />
             </svg>
             <p className="font-inter font-extralight text-[#FDFCFA]/55 text-[11px] md:text-xs tracking-[0.42em] uppercase">
               Wo Mondlicht auf mediterrane Küche trifft
