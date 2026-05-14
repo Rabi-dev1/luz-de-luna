@@ -39,7 +39,7 @@ export default function FindUsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-cormorant text-5xl md:text-6xl lg:text-7xl font-semibold text-[#FDFCFA] leading-[1.0] tracking-[0.01em] mb-20 md:mb-24"
+            className="font-cormorant text-4xl md:text-6xl lg:text-7xl font-semibold text-[#FDFCFA] leading-[1.0] tracking-[0.01em] mb-10 md:mb-24"
           >
             So finden Sie<br />
             <em className="text-[#C5A17F]">uns</em>
@@ -53,7 +53,7 @@ export default function FindUsSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9 }}
-            className="relative h-80 lg:h-full min-h-[480px] overflow-hidden border border-white/5"
+            className="relative h-64 md:h-80 lg:h-full min-h-[300px] md:min-h-[480px] overflow-hidden border border-white/5"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >

@@ -85,7 +85,7 @@ function MoonSVG({ index, today }: { index: number; today: boolean }) {
         </svg>
       </motion.div>
 
-      <span className="text-[#D4C9B8]/35 font-inter text-[8px] tracking-[0.18em] uppercase text-center leading-tight max-w-[52px]">
+      <span className="text-[#D4C9B8]/35 font-inter text-[7px] md:text-[8px] tracking-[0.12em] md:tracking-[0.18em] uppercase text-center leading-tight max-w-[52px]">
         {p.name}
       </span>
     </div>
@@ -141,8 +141,8 @@ export default function MoonPhasesSection() {
           </p>
         </motion.div>
 
-        {/* 8 phases */}
-        <div className="flex items-start justify-center gap-5 md:gap-8 lg:gap-10 flex-wrap md:flex-nowrap mt-8">
+        {/* 8 phases — 4×2 grid on mobile, single row on md+ */}
+        <div className="grid grid-cols-4 gap-y-8 gap-x-4 md:flex md:items-start md:justify-center md:gap-8 lg:gap-10 mt-8">
           {phases.map((_, i) => (
             <MoonSVG key={i} index={i} today={i === todayPhase} />
           ))}

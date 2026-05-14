@@ -14,7 +14,7 @@ function FullMoon() {
       style={{ top: '8%', right: '6%' }}
       aria-hidden="true"
     >
-      <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+      <svg width="220" height="220" viewBox="0 0 220 220" fill="none" className="w-[130px] h-[130px] md:w-[220px] md:h-[220px]">
         {/* Outermost glow rings */}
         <circle cx="110" cy="110" r="108" stroke="#C9A96E" strokeWidth="0.4" opacity="0.06" />
         <circle cx="110" cy="110" r="96"  stroke="#C9A96E" strokeWidth="0.4" opacity="0.09" />
@@ -114,11 +114,11 @@ export default function MoodSection() {
             <div className="w-10 h-px bg-[#C9A96E]/50" />
           </div>
 
-          <p className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-semibold text-[#FDFCFA] leading-[1.1] tracking-[0.02em] max-w-2xl">
+          <p className="font-cormorant text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-[#FDFCFA] leading-[1.1] tracking-[0.02em] max-w-2xl px-2">
             Speisen unter<br />
             <em className="text-[#C9A96E]">dem Mondlicht</em>
           </p>
-          <p className="text-[#FDFCFA]/35 font-inter font-light text-[12px] tracking-[0.18em] mt-5 uppercase">
+          <p className="text-[#FDFCFA]/35 font-inter font-light text-[10px] md:text-[12px] tracking-[0.15em] md:tracking-[0.18em] mt-4 md:mt-5 uppercase px-4">
             Jeder Abend ein Erlebnis — Falkenstraße 22A
           </p>
         </motion.div>

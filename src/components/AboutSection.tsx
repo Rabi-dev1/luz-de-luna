@@ -28,7 +28,7 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative z-10 pt-28 md:pt-36 pb-36 md:pb-52 bg-[#0C0A08] -mt-12"
+      className="relative z-10 pt-20 md:pt-36 pb-24 md:pb-52 bg-[#0C0A08] -mt-8 md:-mt-12"
     >
       {/* Subtle separator glow from above */}
       <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#C9A96E]/4 to-transparent pointer-events-none" />
@@ -44,7 +44,7 @@ export default function AboutSection() {
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 relative lg:mb-[-100px]"
           >
-            <div className="relative aspect-[4/5] overflow-hidden">
+            <div className="relative aspect-[4/3] md:aspect-[4/5] overflow-hidden">
               <motion.div
                 className="absolute inset-0 bg-cover bg-center food-img"
                 style={{
@@ -65,10 +65,10 @@ export default function AboutSection() {
               initial={{ opacity: 0, scale: 0.85, y: 12 }}
               animate={inView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -bottom-5 -right-4 md:right-0 bg-[#1C1914] border border-[#FDFCFA]/6 px-7 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-10"
+              className="absolute -bottom-5 right-3 md:right-0 bg-[#1C1914] border border-[#FDFCFA]/6 px-5 py-4 md:px-7 md:py-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-10"
             >
-              <p className="font-cormorant text-[#C9A96E] text-5xl md:text-6xl font-semibold leading-none tracking-tight">2025</p>
-              <p className="text-[#FAF8F4]/30 font-inter text-[9px] tracking-[0.28em] uppercase font-light mt-2">In Hannover</p>
+              <p className="font-cormorant text-[#C9A96E] text-4xl md:text-6xl font-semibold leading-none tracking-tight">2025</p>
+              <p className="text-[#FAF8F4]/30 font-inter text-[8px] md:text-[9px] tracking-[0.28em] uppercase font-light mt-1.5 md:mt-2">In Hannover</p>
             </motion.div>
 
             {/* Vertical gold accent line */}
@@ -94,14 +94,14 @@ export default function AboutSection() {
               </span>
             </div>
 
-            <h2 className="font-cormorant text-5xl md:text-6xl lg:text-[4.5rem] font-semibold text-[#FDFCFA] leading-[1.0] mb-6 tracking-[0.01em]">
+            <h2 className="font-cormorant text-4xl md:text-6xl lg:text-[4.5rem] font-semibold text-[#FDFCFA] leading-[1.0] mb-5 md:mb-6 tracking-[0.01em]">
               Mehr als ein<br />
               <em className="text-[#D4C9B8]">Restaurant</em>
             </h2>
 
             <div className="w-10 h-px bg-[#C9A96E] mb-10" />
 
-            <p className="text-[#D4C9B8]/60 font-inter font-light text-[15px] leading-[2.05] mb-14 tracking-[0.01em]">
+            <p className="text-[#D4C9B8]/60 font-inter font-light text-[14px] md:text-[15px] leading-[1.9] md:leading-[2.05] mb-10 md:mb-14 tracking-[0.01em]">
               Leidenschaft, Zusammenhalt und ein herzliches Willkommen:
               Das ist unsere Geschichte. Als Familienbetrieb legen wir Wert auf
               echten, freundlichen Umgang und eine entspannte Stimmung.
