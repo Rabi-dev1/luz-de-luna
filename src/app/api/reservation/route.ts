@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,18 +13,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: 'Pflichtfelder fehlen.' }, { status: 400 })
     }
 
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.web.de',
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-    })
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     const formatDate = (d: string) => {
       const [y, m, day] = d.split('-')
@@ -127,8 +116,8 @@ export async function POST(req: NextRequest) {
 </body>
 </html>`
 
-    await transporter.sendMail({
-      from: `"Luz de Luna Website" <${process.env.SMTP_USER}>`,
+    await resend.emails.send({
+      from: 'onboarding@resend.dev',
       to: 'luzdeluna@web.de',
       replyTo: email,
       subject: `Reservierung: ${name} — ${formatDate(date)} · ${time} Uhr · ${persons} Pers.`,
