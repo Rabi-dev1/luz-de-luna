@@ -117,8 +117,8 @@ export async function POST(req: NextRequest) {
 </html>`
 
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'rabi.19@icloud.com',
+      from: 'reservierung@luz-de-luna.info',
+      to: 'luzdeluna@web.de',
       replyTo: email,
       subject: `Reservierung: ${name} — ${formatDate(date)} · ${time} Uhr · ${persons} Pers.`,
       html,
