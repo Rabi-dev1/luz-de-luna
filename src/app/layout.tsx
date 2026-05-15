@@ -21,7 +21,7 @@ const inter = Inter({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
   ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://luz-de-luna-hannover.de')
 
-const ogImage = 'https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=1200&q=90'
+const ogImage = '/images/logo.jpg'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -97,22 +97,28 @@ const jsonLd = {
   acceptsReservations: true,
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '127',
+    ratingValue: '4.9',
+    reviewCount: '102',
     bestRating: '5',
   },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
+      dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '10:00',
       closes: '22:00',
     },
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Saturday', 'Sunday'],
-      opens: '09:00',
-      closes: '23:00',
+      dayOfWeek: ['Saturday'],
+      opens: '10:00',
+      closes: '00:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Sunday'],
+      opens: '10:00',
+      closes: '21:00',
     },
   ],
   sameAs: [
