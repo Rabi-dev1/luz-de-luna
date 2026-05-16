@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
@@ -9,8 +10,19 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="md:col-span-2">
-            <p className="font-cormorant text-3xl font-semibold text-[#C9A96E] tracking-[0.06em] mb-1">Luz de Luna</p>
-            <p className="text-[#FAF8F4]/20 font-inter text-[9px] tracking-[0.3em] uppercase mb-5">Hannover · Linden</p>
+            <div className="flex items-center gap-4 mb-4">
+              <Image
+                src="/images/logo-circle.jpg"
+                alt="Luz de Luna Logo"
+                width={64}
+                height={64}
+                className="rounded-full object-cover"
+              />
+              <div>
+                <p className="font-cormorant text-3xl font-semibold text-[#C9A96E] tracking-[0.06em] leading-none">Luz de Luna</p>
+                <p className="text-[#FAF8F4]/20 font-inter text-[9px] tracking-[0.3em] uppercase mt-1">Hannover · Linden</p>
+              </div>
+            </div>
             <p className="text-[#D4C9B8]/35 font-inter font-light text-[13px] leading-[1.9] max-w-[260px]">
               Restaurant & Café in Hannover-Linden.<br />
               Regionale Küche, warme Atmosphäre,<br />

@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Bike } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -65,9 +66,19 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-20">
 
-          {/* Wordmark */}
-          <Link href="/" className="font-cormorant text-2xl font-semibold tracking-[0.08em] text-[#C5A17F] uppercase">
-            Luz de Luna
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/images/logo-circle.jpg"
+              alt="Luz de Luna"
+              width={44}
+              height={44}
+              className="rounded-full object-cover"
+              priority
+            />
+            <span className="font-cormorant text-xl font-semibold tracking-[0.08em] text-[#C5A17F] uppercase hidden sm:block">
+              Luz de Luna
+            </span>
           </Link>
 
           {/* Desktop nav */}
