@@ -95,19 +95,32 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Credit */}
-        <div className="mt-5 text-center">
-          <p className="font-inter font-light text-[#FAF8F4]/25" style={{ fontSize: '0.72rem' }}>
-            made by{' '}
-            <a
-              href="https://www.kundenpilot.site/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#FAF8F4]/40 hover:text-[#C9A96E] transition-colors duration-200 underline underline-offset-2"
+        {/* Agency credit */}
+        <div className="mt-8 pt-6 border-t border-[#FDFCFA]/[0.04] flex justify-center">
+          <a
+            href="https://www.kundenpilot.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 text-[#FAF8F4]/30 hover:text-[#FAF8F4]/60 transition-colors duration-300"
+          >
+            <span className="font-inter font-light tracking-[0.08em]" style={{ fontSize: '0.7rem' }}>
+              Website by
+            </span>
+            <span
+              className="font-inter font-medium tracking-[0.06em] text-[#FAF8F4]/50 group-hover:text-[#C9A96E] transition-colors duration-300 relative"
+              style={{ fontSize: '0.78rem' }}
             >
-              KundenPilot.site
-            </a>
-          </p>
+              KundenPilot
+              <span className="absolute -bottom-px left-0 w-0 h-px bg-[#C9A96E] group-hover:w-full transition-all duration-300 ease-out" />
+            </span>
+            <svg
+              width="10" height="10" viewBox="0 0 10 10" fill="none"
+              className="opacity-0 group-hover:opacity-60 transition-opacity duration-300 -translate-y-px"
+              aria-hidden="true"
+            >
+              <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
