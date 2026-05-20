@@ -94,6 +94,21 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
+        {/* Credit */}
+        <div className="mt-5 text-center">
+          <p className="font-inter font-light text-[#FAF8F4]/25" style={{ fontSize: '0.72rem' }}>
+            made by{' '}
+            <a
+              href="https://www.kundenpilot.site/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FAF8F4]/40 hover:text-[#C9A96E] transition-colors duration-200 underline underline-offset-2"
+            >
+              KundenPilot.site
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   )
